@@ -1,0 +1,15 @@
+{
+  "name": "question-convert",
+  "version": "0.0.1",
+  "description": "nexta question convert",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "author": "nghiabadao",
+  "license": "ISC",
+  "devDependencies": {
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  }
+}
