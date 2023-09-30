@@ -1,1 +1,1 @@
-# Converts the character question set to the next displayable type
+# Convert the special character question set to the nexta displayable type
