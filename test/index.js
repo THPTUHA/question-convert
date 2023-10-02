@@ -1,4 +1,4 @@
-const { hanldeQuestion } = require("../dist/handler")
+const { hanldeQuestion } = require("../dist")
 
 const questions = [
     {

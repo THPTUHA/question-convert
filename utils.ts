@@ -2,7 +2,6 @@ import { BASE_IMG_QUESTION_URL, ITEM_TYPE } from "./constants";
 import { Group, Item } from "./types";
 //#_ _#
 const getContentWrap = (str: string) => {
-    // console.log("FUCK---", str)
     if (str.includes("(#_")) {
         return str.slice(3, str.length - 3)
     }
