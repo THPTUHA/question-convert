@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "experimentalDecorators": true,
-    "module": "commonjs",
+    "module": "esnext",
     "esModuleInterop": true,
     "target": "es6",
     "moduleResolution": "node",
@@ -10,13 +10,24 @@
     "outDir": "dist",
     "sourceRoot": ".",
     "resolveJsonModule": true,
+    "declaration": true,
+    "importHelpers": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "allowJs": true,
+    "noUnusedParameters": true,
     "lib": [
       "ESNext.String"
     ]
   },
   "exclude": [
     "node_modules",
-    "/test"
+    "test",
+    "dist"
   ],
   "lib": [
     "es2015"

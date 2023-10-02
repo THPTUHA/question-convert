@@ -1,6 +1,6 @@
 {
   "name": "question-convert",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "nexta question convert",
   "main": "dist/index.js",
   "scripts": {

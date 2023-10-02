@@ -1,5 +1,5 @@
 import { ITEM_TYPE, QUESTION_TYPE, S_ANSWER_CORRECT, S_ANSWER_WRONG, S_UNANSWER } from "./constants";
-import { QuestionRender, RawQuestion, RecordAnswerExamPupil, Solution } from "./types";
+import { QuestionRender, RawQuestion, Solution } from "./types";
 import { generateKeyMap, randomArray, splitStringBySpecialCharacter } from "./utils";
 
 export const hanldeQuestion = (questions: RawQuestion[]) => {
@@ -97,7 +97,7 @@ export const hanldeQuestion = (questions: RawQuestion[]) => {
                             const content = answer.content;
                             let a = 0; //key dap_an
                             let i = 0;// Vị trí input, hoặc select trong  content
-                            for (const [j, s_item] of items.entries()) {
+                            for (const [_, s_item] of items.entries()) {
                                 for (; i < content.length; ++i) {
                                     const input = content[i];
                                     const key = generateKeyMap([a_index, i]);
