@@ -1,7 +1,11 @@
 {
   "name": "question-convert",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "nexta question convert",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/THPTUHA/question-convert"
+  },
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc"
