@@ -21,7 +21,8 @@
     "allowJs": true,
     "noUnusedParameters": true,
     "lib": [
-      "ESNext.String"
+      "ESNext.String",
+      "es2015"
     ]
   },
   "exclude": [
