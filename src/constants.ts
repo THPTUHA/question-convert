@@ -32,6 +32,9 @@ export const QUESTION_TYPE = {
     CH_008: "CH_008",
     CH_009: "CH_009",
     CH_010: "CH_010",
+    CH_011: "CH_011",
+    CH_012: "CH_012",
+    CH_013: "CH_013",
 
     TV_001: "TV_001",
     TA_001: "TA_001",
