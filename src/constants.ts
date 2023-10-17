@@ -19,6 +19,7 @@ export const ITEM_TYPE = {
     READ_TD: 12,
     READ_ND: 13,
     READ_TG: 14,
+    MATH_JAX: 15,
 };
 
 export const QUESTION_TYPE = {
