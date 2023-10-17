@@ -28,8 +28,7 @@ const handleText = (str: string, result: Item[]) => {
   //         })
   //     }
   // }
-  // const data = str.replace(/\n/g, '</br>');
-  const data = str;
+  const data = str.replace(/(?<!\\)\n/g, '</br>');
   if (data) {
     result.push({
       type: ITEM_TYPE.TEXT,

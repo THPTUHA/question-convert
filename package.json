@@ -1,6 +1,6 @@
 {
   "name": "question-convert",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "nexta question convert",
   "repository": {
     "type": "git",
@@ -8,7 +8,8 @@
   },
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "test":"node ./test"
   },
   "author": "nghiabadao",
   "license": "ISC",
