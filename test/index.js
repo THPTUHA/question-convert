@@ -214,9 +214,287 @@ const questions = [
         "admin_approve": 1,
         "random": false,
         "format": ""
+    },
+    {
+        "id": 203241,
+        "title": null,
+        "title_ltvc": null,
+        "content": {
+            "ma_cau_hoi": "NCZ108_T_1_2_50",
+            "kieu_cau_hoi": "CH_011",
+            "do_kho": "Nhận biết",
+            "voice": "",
+            "format": "",
+            "random": 0,
+            "noi_dung_cau_hoi": {
+                "noi_dung": "Nghiệm của hệ phương trình $\\left\\{\\begin{array}{l}\\frac{1}{x+2}+\\frac{2}{y-1}=1 \\\\ \\frac{3}{x+2}-\\frac{9}{y-1}=-2\\end{array}\\right.$ là"
+            },
+            "ds_cau_tra_loi": [
+                {
+                    "id_cau_tra_loi": "A",
+                    "noi_dung_cau_tra_loi": {
+                        "noi_dung": "$\\left\\{\\begin{array}{l}x=3 \\\\ y=2\\end{array}\\right.$"
+                    }
+                },
+                {
+                    "id_cau_tra_loi": "B",
+                    "noi_dung_cau_tra_loi": {
+                        "noi_dung": "$\\left\\{\\begin{array}{l}x=3 \\\\ y=-4\\end{array}\\right.$"
+                    }
+                },
+                {
+                    "id_cau_tra_loi": "C",
+                    "noi_dung_cau_tra_loi": {
+                        "noi_dung": "$\\left\\{\\begin{array}{l}x=1 \\\\ y=4\\end{array}\\right.$"
+                    }
+                },
+                {
+                    "id_cau_tra_loi": "D",
+                    "noi_dung_cau_tra_loi": {
+                        "noi_dung": "$\\left\\{\\begin{array}{l}x=4 \\\\ y=3\\end{array}\\right.$"
+                    }
+                }
+            ],
+            "dap_an": [
+                {
+                    "id_cau_tra_loi": "C",
+                    "noi_dung_dap_an": ""
+                }
+            ],
+            "giai_thich_dap_an": {
+                "noi_dung": null
+            },
+            "ghi_chu": null,
+            "difficult_level": 1
+        },
+        "voice_id": null,
+        "coin": null,
+        "difficult_level": 1,
+        "code": null,
+        "parent_code": null,
+        "admin_approve": 1,
+        "random": false,
+        "format": ""
+    },
+    {
+        "id": 98948,
+        "title": null,
+        "title_ltvc": null,
+        "content": {
+            "ma_cau_hoi": "CB_T_5_36_10",
+            "kieu_cau_hoi": "CH_004",
+            "do_kho": "Thông hiểu",
+            "voice": "",
+            "format": "",
+            "random": 0,
+            "noi_dung_cau_hoi": {
+                "noi_dung": "Cho hình vẽ. Tính tỉ số diện tích hình tam giác ACD và diện tích hình vuông ABCD?\n#_Q_CB_T_5_36_10_1.png_#"
+            },
+            "ds_cau_tra_loi": [
+                {
+                    "id_cau_tra_loi": "A",
+                    "noi_dung_cau_tra_loi": {
+                        "noi_dung": "#_(#_S_ ACD_#)/(#_S_ABCD_#)_# = #_[]/[]_#\n(Viết kết quả dưới dạng phân số tối giản.)"
+                    }
+                }
+            ],
+            "dap_an": [
+                {
+                    "id_cau_tra_loi": "A",
+                    "noi_dung_dap_an": "1&2"
+                }
+            ],
+            "giai_thich_dap_an": {
+                "noi_dung": null
+            },
+            "ghi_chu": null,
+            "difficult_level": 2
+        },
+        "voice_id": null,
+        "coin": null,
+        "difficult_level": 2,
+        "code": null,
+        "parent_code": null,
+        "admin_approve": 1,
+        "random": false,
+        "format": ""
+    },
+    {
+        "id": 134509,
+        "title": null,
+        "title_ltvc": null,
+        "content": {
+            "ma_cau_hoi": "CB_TV_2_8_BDTV001_6",
+            "kieu_cau_hoi": "TV_009",
+            "do_kho": "Nhận biết",
+            "voice": "",
+            "format": "Luyện từ và câu",
+            "random": 1,
+            "noi_dung_cau_hoi": {
+                "noi_dung": "<b>Sắp xếp các từ sau vào nhóm thích hợp.</b>\n#_Group:1_Đồ dùng học tập;2_Đồ dùng nấu ăn_#"
+            },
+            "ds_cau_tra_loi": [
+                {
+                    "id_cau_tra_loi": "A",
+                    "noi_dung_cau_tra_loi": {
+                        "noi_dung": "thước kẻ"
+                    }
+                },
+                {
+                    "id_cau_tra_loi": "B",
+                    "noi_dung_cau_tra_loi": {
+                        "noi_dung": "bút chì"
+                    }
+                },
+                {
+                    "id_cau_tra_loi": "C",
+                    "noi_dung_cau_tra_loi": {
+                        "noi_dung": "tẩy"
+                    }
+                },
+                {
+                    "id_cau_tra_loi": "D",
+                    "noi_dung_cau_tra_loi": {
+                        "noi_dung": "bút màu"
+                    }
+                },
+                {
+                    "id_cau_tra_loi": "E",
+                    "noi_dung_cau_tra_loi": {
+                        "noi_dung": "ê ke"
+                    }
+                },
+                {
+                    "id_cau_tra_loi": "F",
+                    "noi_dung_cau_tra_loi": {
+                        "noi_dung": "nồi"
+                    }
+                },
+                {
+                    "id_cau_tra_loi": "G",
+                    "noi_dung_cau_tra_loi": {
+                        "noi_dung": "chảo"
+                    }
+                },
+                {
+                    "id_cau_tra_loi": "H",
+                    "noi_dung_cau_tra_loi": {
+                        "noi_dung": "bát"
+                    }
+                },
+                {
+                    "id_cau_tra_loi": "I",
+                    "noi_dung_cau_tra_loi": {
+                        "noi_dung": "thìa"
+                    }
+                },
+                {
+                    "id_cau_tra_loi": "J",
+                    "noi_dung_cau_tra_loi": {
+                        "noi_dung": "đĩa"
+                    }
+                },
+                {
+                    "id_cau_tra_loi": "K",
+                    "noi_dung_cau_tra_loi": {
+                        "noi_dung": "đũa"
+                    }
+                }
+            ],
+            "dap_an": [
+                {
+                    "id_cau_tra_loi": "A",
+                    "noi_dung_dap_an": "1_A&B&C&D&E"
+                },
+                {
+                    "id_cau_tra_loi": "B",
+                    "noi_dung_dap_an": "2_F&G&H&I&J&K"
+                }
+            ],
+            "giai_thich_dap_an": {
+                "noi_dung": null
+            },
+            "ghi_chu": null,
+            "difficult_level": 1
+        },
+        "voice_id": null,
+        "coin": null,
+        "difficult_level": 1,
+        "code": null,
+        "parent_code": "CB_TV_2_8_BDTV001",
+        "admin_approve": 1,
+        "random": true,
+        "format": "Luyện từ và câu"
+    },
+    {
+        "id": 128100,
+        "title": null,
+        "title_ltvc": null,
+        "content": {
+            "ma_cau_hoi": "CB_TV_2_8_BDTV001_17",
+            "kieu_cau_hoi": "TV_004",
+            "do_kho": "Nhận biết",
+            "voice": "",
+            "format": "Luyện từ và câu",
+            "random": 1,
+            "noi_dung_cau_hoi": {
+                "noi_dung": "<b>Câu sau có mấy từ chỉ đồ dùng học tập?</b>\nSau khi học bài xong, Mai thường tự soạn sách, vở, bút, thước, tẩy đầy đủ rồi mới đi ngủ."
+            },
+            "ds_cau_tra_loi": [
+                {
+                    "id_cau_tra_loi": "A",
+                    "noi_dung_cau_tra_loi": {
+                        "noi_dung": "5 từ"
+                    }
+                },
+                {
+                    "id_cau_tra_loi": "B",
+                    "noi_dung_cau_tra_loi": {
+                        "noi_dung": "4 từ"
+                    }
+                },
+                {
+                    "id_cau_tra_loi": "C",
+                    "noi_dung_cau_tra_loi": {
+                        "noi_dung": "3 từ"
+                    }
+                },
+                {
+                    "id_cau_tra_loi": "D",
+                    "noi_dung_cau_tra_loi": {
+                        "noi_dung": "2 từ"
+                    }
+                },
+                {
+                    "id_cau_tra_loi": "E",
+                    "noi_dung_cau_tra_loi": {
+                        "noi_dung": "6 từ"
+                    }
+                }
+            ],
+            "dap_an": [
+                {
+                    "id_cau_tra_loi": "A",
+                    "noi_dung_dap_an": ""
+                }
+            ],
+            "giai_thich_dap_an": {
+                "noi_dung": null
+            },
+            "ghi_chu": null,
+            "difficult_level": 1
+        },
+        "voice_id": null,
+        "coin": null,
+        "difficult_level": 1,
+        "code": null,
+        "parent_code": "CB_TV_2_8_BDTV001",
+        "admin_approve": 1,
+        "random": true,
+        "format": "Luyện từ và câu"
     }
 ]
 
 const data = hanldeQuestion(questions)
 // console.log(data[1].answers[3].content)
-console.log(data[3].answers[0])
+console.log(data[7])

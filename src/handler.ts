@@ -44,12 +44,18 @@ export const hanldeQuestion = (questions: RawQuestion[]) => {
                     pos: index,
                 }
             });
-            if (question.random && question_type && [QUESTION_TYPE.TA_014].includes(question_type)) {
-                randomArray(answers)
-            }
 
             // Random thứ tự đáp án
-            if (question.random && question_type && [QUESTION_TYPE.CH_005, QUESTION_TYPE.TA_008, QUESTION_TYPE.TV_008].includes(question_type)) {
+            if (question.random && question_type && [
+                QUESTION_TYPE.CH_005, 
+                QUESTION_TYPE.TA_008, 
+                QUESTION_TYPE.TV_008,
+                QUESTION_TYPE.TA_014,
+                QUESTION_TYPE.TA_009,
+                QUESTION_TYPE.TV_009,
+                QUESTION_TYPE.TA_004,
+                QUESTION_TYPE.TV_004,
+            ].includes(question_type)) {
                 randomArray(answers)
             }
 
@@ -187,7 +193,7 @@ export const hanldeQuestion = (questions: RawQuestion[]) => {
                                 QUESTION_TYPE.CH_006, QUESTION_TYPE.TV_004, QUESTION_TYPE.TA_004,
                                 QUESTION_TYPE.CH_010, QUESTION_TYPE.CH_005,
                                 QUESTION_TYPE.TV_013, QUESTION_TYPE.TA_013,
-                                QUESTION_TYPE.TV_003, QUESTION_TYPE.TA_003
+                                QUESTION_TYPE.TV_003, QUESTION_TYPE.TA_003, QUESTION_TYPE.CH_011,
                             ].includes(question_type)) {
                                 solutions[`${a_index}#${0}`] = answer.id;
                                 answer_pupil[`${a_index}#${0}`] = '';
@@ -384,7 +390,7 @@ export const handleCheckQuestion = (questions: QuestionRender[]) => {
                     QUESTION_TYPE.TA_003, QUESTION_TYPE.CH_006,
                     QUESTION_TYPE.TA_004, QUESTION_TYPE.TV_004,
                     QUESTION_TYPE.TA_013, QUESTION_TYPE.TV_013,
-                    QUESTION_TYPE.CH_010,
+                    QUESTION_TYPE.CH_010, QUESTION_TYPE.CH_011,
                 ].includes(question.type)) {
                     const key_ans = Object.keys(answer_pupil);
                     if (keys.length != key_ans.length) {

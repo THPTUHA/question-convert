@@ -367,7 +367,7 @@ const splitAnswer = (str: string, result: Item[]) => {
   for (const item of tmp) {
     result.push({
       type: ITEM_TYPE.ANSWER,
-      data: item,
+      data: item.trim(),
     });
   }
 };
