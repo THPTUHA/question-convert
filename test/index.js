@@ -492,9 +492,62 @@ const questions = [
         "admin_approve": 1,
         "random": true,
         "format": "Luyện từ và câu"
+    },
+    {
+        "id": 203373,
+        "title": null,
+        "title_ltvc": null,
+        "content": {
+            "ma_cau_hoi": "NCZ108_T_1_5_6",
+            "kieu_cau_hoi": "CH_001",
+            "do_kho": "Nhận biết",
+            "voice": "",
+            "format": "",
+            "random": 0,
+            "noi_dung_cau_hoi": {
+                "noi_dung": "<b>Fill in the blanks and choose the correct answer.</b>"
+            },
+            "ds_cau_tra_loi": [
+                {
+                    "id_cau_tra_loi": "A",
+                    "noi_dung_cau_tra_loi": {
+                        "noi_dung": "#_618/10_# = #_[] []/[]_# = #_[]_#"
+                    }
+                },
+                {
+                    "id_cau_tra_loi": "B",
+                    "noi_dung_cau_tra_loi": {
+                        "noi_dung": "#_DR:Sixty- one point eight;Eight point sixty-one_#"
+                    }
+                }
+            ],
+            "dap_an": [
+                {
+                    "id_cau_tra_loi": "A",
+                    "noi_dung_dap_an": "61&8&10&61,8"
+                },
+                {
+                    "id_cau_tra_loi": "B",
+                    "noi_dung_dap_an": "Sixty- one point eight"
+                }
+            ],
+            "giai_thich_dap_an": {
+                "noi_dung": null
+            },
+            "ghi_chu": null,
+            "difficult_level": 1
+        },
+        "voice_id": null,
+        "coin": null,
+        "difficult_level": 1,
+        "code": null,
+        "parent_code": null,
+        "admin_approve": 1,
+        "random": false,
+        "format": ""
     }
 ]
 
 const data = hanldeQuestion(questions)
 // console.log(data[1].answers[3].content)
-console.log(data[7])
+console.log(data[8])

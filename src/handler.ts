@@ -201,9 +201,7 @@ export const hanldeQuestion = (questions: RawQuestion[]) => {
                             }
                             // Đáp án nguyên bản sau khi cắt thành mảng xx&yy&zz => [xx,yy,zz]
                             const items = splitStringBySpecialCharacter(solution.noi_dung_dap_an, true);
-
                             const content = answer.content;
-
                             // Dạng true false
                             if (question_type && [
                                 QUESTION_TYPE.CH_009
@@ -216,7 +214,7 @@ export const hanldeQuestion = (questions: RawQuestion[]) => {
                             // console.log("ITEMS---", items, answer.content)
                             let i = 0;// Vị trí input, hoặc select trong  content
                             for (let j = 0; j < items.length; ++j) {
-                                const s_item = items[j];
+                                let s_item = items[j];
                                 for (; i < content.length; ++i) {
                                     const input = content[i];
                                     if (input.type != ITEM_TYPE.TEXT && input.type != ITEM_TYPE.IMG && typeof s_item.data == 'string') {
@@ -239,11 +237,15 @@ export const hanldeQuestion = (questions: RawQuestion[]) => {
                                                 }
                                             }
                                         } else if (input.type != ITEM_TYPE.AUDIO) {
+                                            s_item = items[j]
                                             // Đáp án biến đổi lại
-                                            solutions[`${a_index}#${i}`] = s_item.data;
-                                            answer_pupil[`${a_index}#${i}`] = '';
-                                            i++;
-                                            break;
+                                            if(typeof s_item.data === 'string'){
+                                                solutions[`${a_index}#${i}`] = s_item.data;
+                                                answer_pupil[`${a_index}#${i}`] = '';
+                                                i++;
+                                                break;
+                                            }
+                                          
                                         }
                                     }
 
@@ -391,6 +393,7 @@ export const handleCheckQuestion = (questions: QuestionRender[]) => {
                     QUESTION_TYPE.TA_004, QUESTION_TYPE.TV_004,
                     QUESTION_TYPE.TA_013, QUESTION_TYPE.TV_013,
                     QUESTION_TYPE.CH_010, QUESTION_TYPE.CH_011,
+                    QUESTION_TYPE.TA_006, QUESTION_TYPE.TV_006,
                 ].includes(question.type)) {
                     const key_ans = Object.keys(answer_pupil);
                     if (keys.length != key_ans.length) {
