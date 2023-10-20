@@ -2,11 +2,14 @@ import { BASE_IMG_QUESTION_URL, ITEM_TYPE } from "./constants";
 import { Group, Item } from "./types";
 //#_ _#
 const getContentWrap = (str: string) => {
-  if (str.includes('(#_')) {
+  if (str.includes("#_[]_#")){
+    return str
+  }
+  if (str.startsWith('(#_')) {
     return str.slice(3, str.length - 3);
   }
 
-  if (str.includes('#_')) {
+  if (str.startsWith('#_')) {
     return str.slice(2, str.length - 2);
   }
   return str;
@@ -143,7 +146,6 @@ const splitInput = (str: string, result: Item[]) => {
   if (open != close) {
     return false;
   }
-
   let str_pre = str.slice(0, idx);
   if (str_pre) {
     handleText(str_pre, result);
@@ -178,7 +180,6 @@ const splitInput = (str: string, result: Item[]) => {
 
   if (inner.includes('/')) {
     const comp = inner.split('/');
-
     const data = [];
     if (comp.length > 2) {
       return console.log('err');
@@ -192,36 +193,41 @@ const splitInput = (str: string, result: Item[]) => {
 
     // [] []/[]  or []/[]
     // (#_(abab)-_#) / (#_(cdcd)-_#)
+    // '(2 × #_[]_#)/(5 × #_[]_#)'
     const numerator = comp[0];
     if (numerator) {
-      let items;
-      //dat them xử lý phép toán ở tử số và mẫu số của dạng phân số
-      if (numerator.includes('[]')) {
-        items = numerator.split(' ');
-      } else {
-        if (numerator.includes('(') && numerator.includes(')')) {
-          items = numerator.split('/ (?![^[]*])/');
-        } else {
+      if (numerator.includes("#_[]_#")){
+        data.push(numerator)
+      }else{
+        let items;
+        //dat them xử lý phép toán ở tử số và mẫu số của dạng phân số
+        if (numerator.includes('[]')) {
           items = numerator.split(' ');
-        }
-      }
-
-      let pre = '';
-      for (let item of items) {
-        if (item == '[]') {
-          if (pre) {
-            data.push(pre);
-          }
-          data.push('[]');
-          pre = '';
-        } else if (numerator.includes(')-')) {
-          pre += item;
         } else {
-          data.push(item);
+          if (numerator.includes('(') && numerator.includes(')')) {
+            items = numerator.split('/ (?![^[]*])/');
+          } else {
+            items = numerator.split(' ');
+          }
         }
-      }
-      if (pre) {
-        data.push(pre);
+
+        let pre = '';
+        for (let item of items) {
+          if (item == '[]') {
+            if (pre) {
+              data.push(pre);
+            }
+            data.push('[]');
+            pre = '';
+          } else if (numerator.includes(')-')) {
+            pre += item;
+          } else {
+            data.push(item);
+          }
+        }
+        if (pre) {
+          data.push(pre);
+        }
       }
     }
     data.push(comp[1]);
