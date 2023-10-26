@@ -80,7 +80,8 @@ export type QuestionRender = {
     answer_pupil: Solution,
     type: string,
     status: number,
-    focus?: string
+    focus?: string,
+    code?: string,
 }
 
 export type ExamResult = {

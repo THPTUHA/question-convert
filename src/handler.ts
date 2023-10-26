@@ -303,6 +303,7 @@ export const hanldeQuestion = (questions: RawQuestion[]) => {
                 note: content.ghi_chu,
                 difficult_level: content.difficult_level,
                 answer_pupil: answer_pupil,
+                code: content.ma_cau_hoi,
                 type: question.content ? question.content.kieu_cau_hoi : '',
                 status: 0
             })
