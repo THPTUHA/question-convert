@@ -227,7 +227,7 @@ export const hanldeQuestion = (questions: RawQuestion[]) => {
                                                continue
                                             }
                                             for (let k = 0; k < input.data.length; ++k) {
-                                                if (Array.isArray(input.data) && input.data[k] === '[]') {
+                                                if (Array.isArray(input.data) && (input.data[k] === '[]' || input.data[k].includes("#_[]_#"))) {
                                                     let f = items[j];
                                                     if (f && typeof f.data == 'string') {
                                                         solutions[`${a_index}#${i}#${k}`] = f.data;
