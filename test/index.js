@@ -674,9 +674,52 @@ const questions = [
         "admin_approve": 1,
         "random": false,
         "format": ""
+    },
+    {
+        "id": 203739,
+        "title": null,
+        "title_ltvc": null,
+        "content": {
+            "ma_cau_hoi": "NCZ108_T_1_5_32",
+            "kieu_cau_hoi": "CH_001",
+            "do_kho": "Nhận biết",
+            "voice": "",
+            "format": "",
+            "random": 0,
+            "noi_dung_cau_hoi": {
+                "noi_dung": "Có bao nhiêu số có dạng #_(49*5)-_# chia hết cho 9?"
+            },
+            "ds_cau_tra_loi": [
+                {
+                    "id_cau_tra_loi": "A",
+                    "noi_dung_cau_tra_loi": {
+                        "noi_dung": "Có #_[]_# số"
+                    }
+                }
+            ],
+            "dap_an": [
+                {
+                    "id_cau_tra_loi": "A",
+                    "noi_dung_dap_an": "2"
+                }
+            ],
+            "giai_thich_dap_an": {
+                "noi_dung": "Ta có:\n#_(49*5)-_# #_(...)_# 9\n<=> (4 + 9 + * + 5)#_(...)_#9\n<=> (18 + *)#_(...)_#9 \n<=> * = 0 hoặc * = 9\n<=> Có 2 số là số 4905 hoặc 4995 chia hết cho 9"
+            },
+            "ghi_chu": "Chia hết",
+            "difficult_level": 1
+        },
+        "voice_id": null,
+        "coin": null,
+        "difficult_level": 1,
+        "code": null,
+        "parent_code": null,
+        "admin_approve": 1,
+        "random": false,
+        "format": ""
     }
 ]
 
 const data = hanldeQuestion(questions)
 // console.log(data[1].answers[3].content)
-console.log(data[11].title)
+console.log(data[12].explain)

@@ -20,6 +20,7 @@ export const ITEM_TYPE = {
     READ_ND: 13,
     READ_TG: 14,
     MATH_JAX: 15,
+    DIVISIBLE_SIGN: 16,
 };
 
 export const QUESTION_TYPE = {

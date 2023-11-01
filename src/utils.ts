@@ -1,5 +1,19 @@
 import { BASE_IMG_QUESTION_URL, ITEM_TYPE } from "./constants";
 import { Group, Item } from "./types";
+
+const specialText = (t: string)=>{
+  if(t==='(...)'){
+    return {
+      type: ITEM_TYPE.DIVISIBLE_SIGN,
+      data: '(...)',
+    }
+  }
+
+  return {
+    type: ITEM_TYPE.TEXT,
+    data: t,
+  }
+}
 //#_ _#
 const getContentWrap = (str: string) => {
   if (str.includes("#_[]_#")){
@@ -53,22 +67,35 @@ const handleText = (str: string, result: Item[]) => {
   //         })
   //     }
   // }
+ 
   let data = replaceNewLines(str);
   if (data) {
-    result.push({
-      type: ITEM_TYPE.TEXT,
-      data: data,
-    });
+    var imgRegex = /<img[^>]*\/>/;
+    var images = data.match(imgRegex);
+    if(images){
+      let index = 0
+      const arrs = data.split(imgRegex);
+      for(let i = 0; i < arrs.length ; ++i){
+        if(arrs[i] == "" || i > 0){
+          var img = images[index]
+          if(img){
+            var match = img.match( /<img[^>]*src="([^"]*)"[^>]*>/)
+            if(match){
+              var img_src = match[1];
+              result.push({
+                type: ITEM_TYPE.IMG,
+                data: img_src,
+              });
+            }
+          }
+        }
 
-    var imgRegex = /<img[^>]*src="([^"]*)"[^>]*>/;
-    var match = data.match(imgRegex);
-    if(match){
-      data = data.replace(imgRegex, '');
-      var img_src = match[1];
-      result.push({
-        type: ITEM_TYPE.IMG,
-        data: img_src,
-      });
+        if(arrs[i]){
+          result.push(specialText(arrs[i]));
+        }
+      }
+    }else{
+      result.push(specialText(data));
     }
   }
 };
@@ -139,10 +166,7 @@ const splitInput = (str: string, result: Item[]) => {
         if (element[2]) {
           const text = element[2].slice(1, element[2].length);
           if (text) {
-            data[key].push({
-              type: ITEM_TYPE.TEXT,
-              data: text,
-            });
+            data[key].push(specialText(text));
           }
         }
       } else {
@@ -153,10 +177,7 @@ const splitInput = (str: string, result: Item[]) => {
           return false;
         }
         data[key] = [
-          {
-            type: ITEM_TYPE.TEXT,
-            data: elements.join('_'),
-          },
+          specialText(elements.join('_')),
         ];
       }
     }
@@ -337,10 +358,7 @@ const splitInput = (str: string, result: Item[]) => {
       .slice(SPLIT.length, inner.length)
       .split('\n')
       .map(item => {
-        content_ND.push({
-          type: ITEM_TYPE.TEXT,
-          data: item,
-        });
+        content_ND.push(specialText(item));
         content_ND.push({
           type: ITEM_TYPE.TEXT,
           data: '\n',
@@ -359,11 +377,8 @@ const splitInput = (str: string, result: Item[]) => {
     inner
       .slice(SPLIT.length, inner.length)
       .split('\n')
-      .map(item => {
-        content_ND.push({
-          type: ITEM_TYPE.TEXT,
-          data: item,
-        });
+      .map((item:string) => {
+        content_ND.push(specialText(item));
         content_ND.push({
           type: ITEM_TYPE.TEXT,
           data: '\n',
@@ -388,10 +403,7 @@ const splitInput = (str: string, result: Item[]) => {
   }
 
   if (inner) {
-    result.push({
-      type: ITEM_TYPE.TEXT,
-      data: inner,
-    });
+    result.push(specialText(inner));
   }
   return true;
 };
