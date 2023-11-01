@@ -53,17 +53,29 @@ const handleText = (str: string, result: Item[]) => {
   //         })
   //     }
   // }
-  const data = replaceNewLines(str);
+  let data = replaceNewLines(str);
   if (data) {
     result.push({
       type: ITEM_TYPE.TEXT,
       data: data,
     });
+
+    var imgRegex = /<img[^>]*src="([^"]*)"[^>]*>/;
+    var match = data.match(imgRegex);
+    if(match){
+      data = data.replace(imgRegex, '');
+      var img_src = match[1];
+      result.push({
+        type: ITEM_TYPE.IMG,
+        data: img_src,
+      });
+    }
   }
 };
 
+
 const splitInput = (str: string, result: Item[]) => {
-  // if (str.includes(')-_#')) {
+  // if (str.includes(')-_#')) {z
   //   // #_(#_(abab) - _#) / (#_(cdcd) - _#)_#
   //   let item = str.split(')-_#')[0];
   //   if (!item) {

@@ -679,4 +679,4 @@ const questions = [
 
 const data = hanldeQuestion(questions)
 // console.log(data[1].answers[3].content)
-console.log(data[11].explain)
+console.log(data[11].title)
