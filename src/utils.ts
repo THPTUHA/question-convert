@@ -15,6 +15,28 @@ const getContentWrap = (str: string) => {
   return str;
 };
 
+function replaceNewLines(input:string) {
+  let isSpecialString = false; // Biến cờ để xác định xem chúng ta đang ở trong chuỗi đặc biệt
+
+  // Tách chuỗi thành từng ký tự
+  const characters = input.split('');
+
+  for (let i = 0; i < characters.length; i++) {
+    if (characters[i] === '$' && characters[i + 1] === '$') {
+      // Bắt đầu hoặc kết thúc chuỗi đặc biệt
+      isSpecialString = !isSpecialString;
+      i++; // Bỏ qua ký tự thứ hai của "$$"
+    } else if (characters[i] === '\n' && !isSpecialString ) {
+      // Thay thế '\n' bằng `</br>`
+      characters[i] = '</br>';
+    }
+  }
+
+  // Kết hợp các ký tự thành chuỗi kết quả
+  return characters.join('');
+}
+
+
 const handleText = (str: string, result: Item[]) => {
   // console.log(str,'str----322')
   // const arr = str.replace(/\n/g, '#\n#').split('#').filter(item => item);
@@ -31,7 +53,7 @@ const handleText = (str: string, result: Item[]) => {
   //         })
   //     }
   // }
-  const data = str.replace(/(?<!\\)\n/g, '</br>');
+  const data = replaceNewLines(str);
   if (data) {
     result.push({
       type: ITEM_TYPE.TEXT,

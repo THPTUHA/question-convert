@@ -588,9 +588,95 @@ const questions = [
         "admin_approve": 1,
         "random": false,
         "format": ""
+    },
+    {
+        "id": 202133,
+        "title": null,
+        "title_ltvc": null,
+        "content": {
+            "ma_cau_hoi": "CB_T_1_65_28",
+            "kieu_cau_hoi": "CH_012",
+            "do_kho": "Nhận biết",
+            "voice": "",
+            "format": "",
+            "random": 0,
+            "noi_dung_cau_hoi": {
+                "noi_dung": "Cho biểu thức $A=\\frac{2 x+3 \\sqrt{x}}{x \\sqrt{x}+1}+\\frac{1}{x-\\sqrt{x}+1}-\\frac{1}{\\sqrt{x}+1}$ và $B=\\frac{x-\\sqrt{x}+1}{\\sqrt{x}}$ với $x>0$. \na) Tính giá trị của biểu thức $B$ khi $x=36$. \nb) Rút gọn $A$. \nc) Đặt $P=A . B$. So sánh $P$ với 1 . \nd) Tìm $x$ để $P$ có giá trị là số nguyên."
+            },
+            "ds_cau_tra_loi": [
+                {
+                    "id_cau_tra_loi": "A",
+                    "noi_dung_cau_tra_loi": {
+                        "noi_dung": "#_[]_#"
+                    }
+                }
+            ],
+            "dap_an": [
+                {
+                    "id_cau_tra_loi": "A",
+                    "noi_dung_dap_an": "2"
+                }
+            ],
+            "giai_thich_dap_an": {
+                "noi_dung": "a) Thay $x=36$ vào biểu thức $B$, ta được $B=\\frac{36-\\sqrt{36}+1}{\\sqrt{36}}=\\frac{31}{6}$.\nb) Ta có $A=\\frac{2 x+3 \\sqrt{x}}{x \\sqrt{x}+1}+\\frac{1}{x-\\sqrt{x}+1}-\\frac{1}{\\sqrt{x}+1}$\n$$\n=\\frac{2 x+3 \\sqrt{x}+\\sqrt{x}+1-x+\\sqrt{x}-1}{(x-\\sqrt{x}+1)(\\sqrt{x}+1)}=\\frac{x+5 \\sqrt{x}}{(x-\\sqrt{x}+1)(\\sqrt{x}+1)} .\n$$ c) Ta có $P=A \\cdot B=\\frac{x+5 \\sqrt{x}}{(x-\\sqrt{x}+1)(\\sqrt{x}+1)} \\cdot \\frac{x-\\sqrt{x}+1}{\\sqrt{x}}=\\frac{\\sqrt{x}+5}{\\sqrt{x}+1}$.\nXét $P-1=\\frac{\\sqrt{x}+5}{\\sqrt{x}+1}-1=\\frac{4}{\\sqrt{x}+1}>0, \\forall x>0$.\nSuy ra $P>1$.\nd) Ta có $P=1+\\frac{4}{\\sqrt{x}+1}$.\nVì $x>0$ nên $\\sqrt{x}>0 \\Leftrightarrow \\sqrt{x}+1>1 \\Rightarrow \\frac{4}{\\sqrt{x}+1}<4 \\Leftrightarrow P<5$.\nMặt khác theo chứng minh câu c) thì $P>1$. Suy ra $1<P<5$.\nMà $P$ có giá trị là số nguyên nên $P \\in\\{2 ; 3 ; 4\\}$.\nTa có bảng sau <img src=\"https://minio.ftech.ai/fedu/62bea9a3e859bb937f5be0c1-20220812110907791.jpg\" /> Vậy với $x \\in\\left\\{\\frac{1}{9} ; 1 ; 9\\right\\}$ thì $P$ có giá trị là số nguyên."
+            },
+            "ghi_chu": null,
+            "difficult_level": 1
+        },
+        "voice_id": null,
+        "coin": null,
+        "difficult_level": 1,
+        "code": null,
+        "parent_code": null,
+        "admin_approve": 1,
+        "random": false,
+        "format": ""
+    },
+    {
+        "id": 203677,
+        "title": null,
+        "title_ltvc": null,
+        "content": {
+            "ma_cau_hoi": "NCZ108_T_1_2_70",
+            "kieu_cau_hoi": "CH_012",
+            "do_kho": "Nhận biết",
+            "voice": "",
+            "format": "",
+            "random": 0,
+            "noi_dung_cau_hoi": {
+                "noi_dung": "Có hai lọ thủy tinh hình trụ, lọ thứ nhất phía trên trong có đường kính đáy là $30 \\mathrm{~cm}$, chiều cao 20 $\\mathrm{cm}$, đựng đầy nước. Lọ thứ hai bên trong có đường kính đáy là $40 \\mathrm{~cm}$, chiều cao $12 \\mathrm{~cm}$. Hỏi nếu đổ hết nước từ trong lọ thứ nhất sang lọ thứ hai nước có bị tràn ra ngoài không? Tại sao? (Lấy $\\pi \\approx 3,14$ ) <img src=\"https://minio.ftech.ai/fedu/62bea9a3e859bb937f5be0c1-20220807073300255.jpg\" />"
+            },
+            "ds_cau_tra_loi": [
+                {
+                    "id_cau_tra_loi": "A",
+                    "noi_dung_cau_tra_loi": {
+                        "noi_dung": "#_[]_#"
+                    }
+                }
+            ],
+            "dap_an": [
+                {
+                    "id_cau_tra_loi": "A",
+                    "noi_dung_dap_an": "1"
+                }
+            ],
+            "giai_thich_dap_an": {
+                "noi_dung": "Thể tích lọ thứ nhất: \n$V_{1}=S \\cdot h=\\pi R^{2} \\cdot h \\approx 3,14 \\cdot 15^{2} \\cdot 20 \\approx 14130\\left(\\mathrm{~cm}^{3}\\right)$. \nThể tích lọ thứ hai: \n$$ \nV_{2}=S \\cdot  \\\n h=\\pi R^{2} \\cdot h \\approx 3,14 \\cdot 20^{2} \\cdot 12 \\approx 15072\\left(\\mathrm{~cm}^{3}\\right) \n$$ \nDo $V_{1}<V_{2}$ nên đổ hết nước từ lọ thứ nhất sang lọ thứ hai thì không bị tràn"
+            },
+            "ghi_chu": null,
+            "difficult_level": 1
+        },
+        "voice_id": null,
+        "coin": null,
+        "difficult_level": 1,
+        "code": null,
+        "parent_code": null,
+        "admin_approve": 1,
+        "random": false,
+        "format": ""
     }
 ]
 
 const data = hanldeQuestion(questions)
 // console.log(data[1].answers[3].content)
-console.log(data[9])
+console.log(data[11].explain)
