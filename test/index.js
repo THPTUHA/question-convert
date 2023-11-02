@@ -717,9 +717,95 @@ const questions = [
         "admin_approve": 1,
         "random": false,
         "format": ""
+    },
+    {
+        "id": 203789,
+        "title": null,
+        "title_ltvc": null,
+        "content": {
+            "ma_cau_hoi": "NCZ108_T_1_2_42",
+            "kieu_cau_hoi": "CH_012",
+            "do_kho": "Nhận biết",
+            "voice": "",
+            "format": "",
+            "random": 0,
+            "noi_dung_cau_hoi": {
+                "noi_dung": "Gọi $y_{1}, y_{2}$ là tung độ các giao điểm của $(d)$ và $(P)$. Tìm các giá trị của $m$ để $y_{1}+y_{2}<9$."
+            },
+            "ds_cau_tra_loi": [
+                {
+                    "id_cau_tra_loi": "A",
+                    "noi_dung_cau_tra_loi": {
+                        "noi_dung": "#_[]_#"
+                    }
+                }
+            ],
+            "dap_an": [
+                {
+                    "id_cau_tra_loi": "A",
+                    "noi_dung_dap_an": "8"
+                }
+            ],
+            "giai_thich_dap_an": {
+                "noi_dung": "Theo hệ thức Vi-ét, ta có $\\left\\{\\begin{array}{l}x_{1}+x_{2}=2 m \\\\ x_{1} x_{2}=2 m-3\\end{array}\\right.$. Khi đó: \n$$\\begin{aligned} &y_{1}+y_{2}<9 \\Leftrightarrow x_{1}^{2}+x_{2}^{2}<9 \\Leftrightarrow\\left(x_{1}+x_{2}\\right)^{2}-2 x_{1} x_{2}-9<0 \\\\ &\\Leftrightarrow(2 m)^{2}-2(2 m-3)-9<0 \\\\ &\\Leftrightarrow 4 m^{2}-4 m-3<0 \\\\ &\\Leftrightarrow-\\frac{1}{2}&lt;m&lt;\\frac{3}{2} \\end{aligned}$$ \nVậy $-\\frac{1}{2}&lt;m&lt;\\frac{3}{2}$ thì $y_{1}+y_{2}<9$"
+            },
+            "ghi_chu": null,
+            "difficult_level": 1
+        },
+        "voice_id": null,
+        "coin": null,
+        "difficult_level": 1,
+        "code": null,
+        "parent_code": null,
+        "admin_approve": 1,
+        "random": false,
+        "format": ""
+    },
+    {
+        "id": 203789,
+        "title": null,
+        "title_ltvc": null,
+        "content": {
+            "ma_cau_hoi": "NCZ108_T_1_2_42",
+            "kieu_cau_hoi": "CH_012",
+            "do_kho": "Nhận biết",
+            "voice": "",
+            "format": "",
+            "random": 0,
+            "noi_dung_cau_hoi": {
+                "noi_dung": "Gọi $y_{1}, y_{2}$ là tung độ các giao điểm của $(d)$ và $(P)$. Tìm các giá trị của $m$ để $y_{1}+y_{2}<9$."
+            },
+            "ds_cau_tra_loi": [
+                {
+                    "id_cau_tra_loi": "A",
+                    "noi_dung_cau_tra_loi": {
+                        "noi_dung": "#_[]_#"
+                    }
+                }
+            ],
+            "dap_an": [
+                {
+                    "id_cau_tra_loi": "A",
+                    "noi_dung_dap_an": "8"
+                }
+            ],
+            "giai_thich_dap_an": {
+                "noi_dung": "Theo hệ thức Vi-ét, ta có $\\left\\{\\begin{array}{l}x_{1}+x_{2}=2 m \\\\ x_{1} x_{2}=2 m-3\\end{array}\\right.$. Khi đó: \n$$\\begin{aligned} &y_{1}+y_{2}<9 \\Leftrightarrow x_{1}^{2}+x_{2}^{2}<9 \\Leftrightarrow\\left(x_{1}+x_{2}\\right)^{2}-2 x_{1} x_{2}-9<0 \\\\ &\\Leftrightarrow(2 m)^{2}-2(2 m-3)-9<0 \\\\ &\\Leftrightarrow 4 m^{2}-4 m-3<0 \\\\ &\\Leftrightarrow-\\frac{1}{2}&lt;m&lt;\\frac{3}{2} \\end{aligned}$$ \nVậy $-\\frac{1}{2}&lt;m&lt;\\frac{3}{2}$ thì $y_{1}+y_{2}<9$"
+            },
+            "ghi_chu": null,
+            "difficult_level": 1
+        },
+        "voice_id": null,
+        "coin": null,
+        "difficult_level": 1,
+        "code": null,
+        "parent_code": null,
+        "admin_approve": 1,
+        "random": false,
+        "format": ""
     }
 ]
 
 const data = hanldeQuestion(questions)
 // console.log(data[1].answers[3].content)
-console.log(data[12].explain)
+console.log(data[14].explain)

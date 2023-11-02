@@ -50,9 +50,15 @@ function replaceNewLines(input:string) {
   return characters.join('');
 }
 
+function standardizeMathjax(input: string){
+  const regexFrac = /(?<!\\)\\frac/g
+  if(input.match(regexFrac)){
+    return input.replace(regexFrac, '\\\frac')
+  }
+  return input
+}
 
 const handleText = (str: string, result: Item[]) => {
-  // console.log(str,'str----322')
   // const arr = str.replace(/\n/g, '#\n#').split('#').filter(item => item);
   // for(const c of arr){
   //     if(c == '\n'){
@@ -70,6 +76,7 @@ const handleText = (str: string, result: Item[]) => {
  
   let data = replaceNewLines(str);
   if (data) {
+    data = standardizeMathjax(data)
     var imgRegex = /<img[^>]*\/>/;
     var images = data.match(imgRegex);
     if(images){
