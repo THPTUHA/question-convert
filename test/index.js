@@ -806,6 +806,7 @@ const questions = [
     }
 ]
 
+console.log(questions[14].content.giai_thich_dap_an)
 const data = hanldeQuestion(questions)
 // console.log(data[1].answers[3].content)
 console.log(data[14].explain)
