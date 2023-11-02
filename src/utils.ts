@@ -53,9 +53,39 @@ function replaceNewLines(input:string) {
 function standardizeMathjax(input: string){
   const regexFrac = /(?<!\\)\\frac/g
   if(input.match(regexFrac)){
-    return input.replace(regexFrac, '\\\frac')
+    input = input.replace(regexFrac, '\frac')
   }
-  return input
+
+  const regexLeft = /(?<!\\)\\left/g
+  if(input.match(regexLeft)){
+    input = input.replace(regexLeft,"\left")
+  }
+
+  const regexRight= /(?<!\\)\\right/g
+  if(input.match(regexRight)){
+    input = input.replace(regexRight, '\right')
+  }
+
+  const regexBegin= /(?<!\\)\\begin/g
+  if(input.match(regexBegin)){
+    input = input.replace(regexBegin, `\begin`)
+  }
+
+  const regexBracket= /(?<!\\)\\{/g
+  if(input.match(regexBracket)){
+    input = input.replace(regexBracket, `\{`)
+  }
+
+  const regexEnd= /(?<!\\)\\end/g
+  if(input.match(regexEnd)){
+    input = input.replace(regexEnd, `\end`)
+  }
+
+  const regexLeftrightarrow= /(?<!\\)\\Leftrightarrow/g
+  if(input.match(regexLeftrightarrow)){
+    input = input.replace(regexLeftrightarrow, '\Leftrightarrow')
+  }
+  return  input;
 }
 
 const handleText = (str: string, result: Item[]) => {
