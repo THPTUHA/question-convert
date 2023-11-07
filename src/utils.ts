@@ -50,43 +50,49 @@ function replaceNewLines(input:string) {
   return characters.join('');
 }
 
-function standardizeMathjax(input: string){
-  const regexFrac = /(?<!\\)\\frac/g
-  if(input.match(regexFrac)){
-    input = input.replace(regexFrac, '\frac')
-  }
+// function standardizeMathjax(input: string){
+//   const regexFrac = /(?<!\\)\\frac/g
+//   if(input.match(regexFrac)){
+//     input = input.replace(regexFrac, '\frac')
+//   }
 
-  const regexLeft = /(?<!\\)\\left/g
-  if(input.match(regexLeft)){
-    input = input.replace(regexLeft,"\left")
-  }
+//   const regexLeft = /(?<!\\)\\left/g
+//   if(input.match(regexLeft)){
+//     input = input.replace(regexLeft,"----left")
+//     const items = input.split("----left")
+//     let a =items[0]
+//     for(let i=1; i< items.length; i++){
+//       a += `\left`+items[i]
+//     }
+//     input = a
+//   }
 
-  const regexRight= /(?<!\\)\\right/g
-  if(input.match(regexRight)){
-    input = input.replace(regexRight, '\right')
-  }
+//   const regexRight= /(?<!\\)\\right/g
+//   if(input.match(regexRight)){
+//     input = input.replace(regexRight, '\right')
+//   }
 
-  const regexBegin= /(?<!\\)\\begin/g
-  if(input.match(regexBegin)){
-    input = input.replace(regexBegin, `\begin`)
-  }
+//   const regexBegin= /(?<!\\)\\begin/g
+//   if(input.match(regexBegin)){
+//     input = input.replace(regexBegin, `\begin`)
+//   }
 
-  const regexBracket= /(?<!\\)\\{/g
-  if(input.match(regexBracket)){
-    input = input.replace(regexBracket, `\{`)
-  }
+//   const regexBracket= /(?<!\\)\\{/g
+//   if(input.match(regexBracket)){
+//     input = input.replace(regexBracket, `\{`)
+//   }
 
-  const regexEnd= /(?<!\\)\\end/g
-  if(input.match(regexEnd)){
-    input = input.replace(regexEnd, `\end`)
-  }
+//   const regexEnd= /(?<!\\)\\end/g
+//   if(input.match(regexEnd)){
+//     input = input.replace(regexEnd, `\end`)
+//   }
 
-  const regexLeftrightarrow= /(?<!\\)\\Leftrightarrow/g
-  if(input.match(regexLeftrightarrow)){
-    input = input.replace(regexLeftrightarrow, '\Leftrightarrow')
-  }
-  return  input;
-}
+//   const regexLeftrightarrow= /(?<!\\)\\Leftrightarrow/g
+//   if(input.match(regexLeftrightarrow)){
+//     input = input.replace(regexLeftrightarrow, '\Leftrightarrow')
+//   }
+//   return  input;
+// }
 
 const handleText = (str: string, result: Item[]) => {
   // const arr = str.replace(/\n/g, '#\n#').split('#').filter(item => item);
@@ -106,7 +112,7 @@ const handleText = (str: string, result: Item[]) => {
  
   let data = replaceNewLines(str);
   if (data) {
-    data = standardizeMathjax(data)
+    // data = standardizeMathjax(data) 
     var imgRegex = /<img[^>]*\/>/;
     var images = data.match(imgRegex);
     if(images){
