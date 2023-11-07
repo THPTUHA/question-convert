@@ -803,10 +803,152 @@ const questions = [
         "admin_approve": 1,
         "random": false,
         "format": ""
+    },
+    {
+        "id": 73737,
+        "title": null,
+        "title_ltvc": null,
+        "content": {
+            "ma_cau_hoi": "CB_T_1_40_23",
+            "kieu_cau_hoi": "CH_007",
+            "do_kho": "Thông hiểu",
+            "voice": "",
+            "format": "",
+            "random": 1,
+            "noi_dung_cau_hoi": {
+                "noi_dung": "Nối số với hình."
+            },
+            "ds_cau_tra_loi": [
+                {
+                    "id_cau_tra_loi": "A",
+                    "noi_dung_cau_tra_loi": {
+                        "noi_dung": "#_A_CB_T_1_40_23_1.png_#"
+                    }
+                },
+                {
+                    "id_cau_tra_loi": "B",
+                    "noi_dung_cau_tra_loi": {
+                        "noi_dung": "#_A_CB_T_1_40_23_2.png_#"
+                    }
+                },
+                {
+                    "id_cau_tra_loi": "C",
+                    "noi_dung_cau_tra_loi": {
+                        "noi_dung": "#_A_CB_T_1_40_23_3.png_#"
+                    }
+                },
+                {
+                    "id_cau_tra_loi": "D",
+                    "noi_dung_cau_tra_loi": {
+                        "noi_dung": "#_A_CB_T_1_40_23_4.png_#"
+                    }
+                },
+                {
+                    "id_cau_tra_loi": "E",
+                    "noi_dung_cau_tra_loi": {
+                        "noi_dung": "#_A_CB_T_1_40_23_5.png_#"
+                    }
+                },
+                {
+                    "id_cau_tra_loi": "F",
+                    "noi_dung_cau_tra_loi": {
+                        "noi_dung": "#_A_CB_T_1_40_23_6.png_#"
+                    }
+                }
+            ],
+            "dap_an": [
+                {
+                    "id_cau_tra_loi": "A",
+                    "noi_dung_dap_an": "A_D"
+                },
+                {
+                    "id_cau_tra_loi": "B",
+                    "noi_dung_dap_an": "B_E"
+                },
+                {
+                    "id_cau_tra_loi": "C",
+                    "noi_dung_dap_an": "C_F"
+                }
+            ],
+            "giai_thich_dap_an": {
+                "noi_dung": null
+            },
+            "ghi_chu": null,
+            "difficult_level": 2
+        },
+        "voice_id": null,
+        "coin": null,
+        "difficult_level": 2,
+        "code": null,
+        "parent_code": null,
+        "admin_approve": 1,
+        "random": true,
+        "format": ""
+    },
+    {
+        "id": 200956,
+        "title": null,
+        "title_ltvc": null,
+        "content": {
+            "ma_cau_hoi": "CBZ107_T_13_1_1",
+            "kieu_cau_hoi": "CH_011",
+            "do_kho": "Nhận biết",
+            "voice": "",
+            "format": "",
+            "random": 1,
+            "noi_dung_cau_hoi": {
+                "noi_dung": "Căn bậc hai số học của 25 là"
+            },
+            "ds_cau_tra_loi": [
+                {
+                    "id_cau_tra_loi": "A",
+                    "noi_dung_cau_tra_loi": {
+                        "noi_dung": "$\\sqrt{25}$"
+                    }
+                },
+                {
+                    "id_cau_tra_loi": "B",
+                    "noi_dung_cau_tra_loi": {
+                        "noi_dung": "$\\pm 5$"
+                    }
+                },
+                {
+                    "id_cau_tra_loi": "C",
+                    "noi_dung_cau_tra_loi": {
+                        "noi_dung": "5"
+                    }
+                },
+                {
+                    "id_cau_tra_loi": "D",
+                    "noi_dung_cau_tra_loi": {
+                        "noi_dung": "$-5$"
+                    }
+                }
+            ],
+            "dap_an": [
+                {
+                    "id_cau_tra_loi": "A",
+                    "noi_dung_dap_an": "A"
+                }
+            ],
+            "giai_thich_dap_an": {
+                "noi_dung": null
+            },
+            "ghi_chu": null,
+            "difficult_level": 1
+        },
+        "voice_id": null,
+        "coin": null,
+        "difficult_level": 1,
+        "code": null,
+        "parent_code": null,
+        "admin_approve": 0,
+        "random": true,
+        "format": ""
     }
 ]
 
-console.log(questions[14].content.giai_thich_dap_an)
 const data = hanldeQuestion(questions)
 // console.log(data[1].answers[3].content)
-console.log(data[14].explain)
+console.dir(data[16].answers)
+console.dir(data[16].solutions)

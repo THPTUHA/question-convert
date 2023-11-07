@@ -55,6 +55,11 @@ export const hanldeQuestion = (questions: RawQuestion[]) => {
                 QUESTION_TYPE.TV_009,
                 QUESTION_TYPE.TA_004,
                 QUESTION_TYPE.TV_004,
+                QUESTION_TYPE.CH_007,
+                QUESTION_TYPE.CH_004,
+                QUESTION_TYPE.CH_011,
+                QUESTION_TYPE.TV_013,
+                QUESTION_TYPE.TA_013,
             ].includes(question_type)) {
                 randomArray(answers)
             }
