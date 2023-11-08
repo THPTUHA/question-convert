@@ -950,5 +950,5 @@ const questions = [
 
 const data = hanldeQuestion(questions)
 // console.log(data[1].answers[3].content)
-console.dir(data[16].answers)
-console.dir(data[16].solutions)
+console.dir(data[15].answers)
+console.dir(data[15].solutions)
