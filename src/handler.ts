@@ -55,7 +55,6 @@ export const hanldeQuestion = (questions: RawQuestion[]) => {
                 QUESTION_TYPE.TV_009,
                 QUESTION_TYPE.TA_004,
                 QUESTION_TYPE.TV_004,
-                QUESTION_TYPE.CH_007,
                 QUESTION_TYPE.CH_004,
                 QUESTION_TYPE.CH_011,
                 QUESTION_TYPE.TV_013,
@@ -64,6 +63,15 @@ export const hanldeQuestion = (questions: RawQuestion[]) => {
                 randomArray(answers)
             }
 
+            if (question.random && question_type && [
+                QUESTION_TYPE.CH_007,
+            ].includes(question_type)){
+                const top = answers.slice(0, Math.floor( answers.length/ 2))
+                const bottom = answers.slice( Math.floor( answers.length/ 2 ),answers.length)
+                randomArray(top)
+                randomArray(bottom)
+                answers =  [...top, ...bottom]
+            }
             // "answer_index#input_index"
             let solutions: Solution = {}
             let answer_pupil: Solution = {}
