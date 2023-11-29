@@ -110,7 +110,7 @@ export type Group = {
 
 export type RecordAnswerExamPupil = {
     answer: any,
-    question_exam_id: number,
+    question_id: number,
     status: number,
 }
 
