@@ -304,6 +304,9 @@ const splitInput = (str: string, result: Item[]) => {
         } else {
           if (numerator.includes('(') && numerator.includes(')')) {
             items = numerator.split('/ (?![^[]*])/');
+            items = items.map(el => {
+              return el?.replace(/[(]/g, '')?.replace(/[)]/g, '');
+            });
           } else {
             items = numerator.split(' ');
           }
@@ -328,7 +331,7 @@ const splitInput = (str: string, result: Item[]) => {
         }
       }
     }
-    data.push(comp[1]);
+    data.push(comp[1]?.replace(/[(]/g, '')?.replace(/[)]/g, ''));
     result.push({
       type: ITEM_TYPE.FRACTION,
       data,
