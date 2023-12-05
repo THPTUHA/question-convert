@@ -305,7 +305,11 @@ const splitInput = (str: string, result: Item[]) => {
           if (numerator.includes('(') && numerator.includes(')')) {
             items = numerator.split('/ (?![^[]*])/');
             items = items.map(el => {
-              return el?.replace(/[(]/g, '')?.replace(/[)]/g, '');
+              if (el && el[0] === '(' && el[el.length - 1] === ')') {
+                return el?.replace(/[(]/g, '')?.replace(/[)]/g, '');
+              } else {
+                return el;
+              }
             });
           } else {
             items = numerator.split(' ');
@@ -331,7 +335,11 @@ const splitInput = (str: string, result: Item[]) => {
         }
       }
     }
-    data.push(comp[1]?.replace(/[(]/g, '')?.replace(/[)]/g, ''));
+    if (comp[1] && comp[1][0] === '(' && comp[1][comp[1].length - 1] === ')') {
+      data.push(comp[1]?.replace(/[(]/g, '')?.replace(/[)]/g, ''));
+    } else {
+      data.push(comp[1]);
+    }
     result.push({
       type: ITEM_TYPE.FRACTION,
       data,
