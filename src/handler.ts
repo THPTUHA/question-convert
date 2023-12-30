@@ -1,4 +1,5 @@
 import { ITEM_TYPE, QUESTION_TYPE, S_ANSWER_CORRECT, S_ANSWER_WRONG, S_UNANSWER } from "./constants";
+import { regexCheckRenderInput } from "./regexExpression";
 import { QuestionRender, RawQuestion, Solution } from "./types";
 import { generateKeyMap, randomArray, splitStringBySpecialCharacter } from "./utils";
 
@@ -29,7 +30,11 @@ export const hanldeQuestion = (questions: RawQuestion[]) => {
                 ].includes(content.kieu_cau_hoi)) {
                     if (_content[0] && typeof _content[0].data === 'string') {
                         let eles = _content[0].data.split("_");
-                        _content[0].data = eles[1]
+                        // _content[0].data = eles[1]
+                        let formatContent = _content[0].data.substring(
+                            _content[0].data.indexOf('_') + 1,
+                          );
+                          _content[0].data = formatContent;
                         return {
                             id: item.id_cau_tra_loi,
                             content: _content,
@@ -230,23 +235,52 @@ export const hanldeQuestion = (questions: RawQuestion[]) => {
                                 let s_item = items[j];
                                 for (; i < content.length; ++i) {
                                     const input = content[i];
-                                    if (input.type != ITEM_TYPE.TEXT && input.type != ITEM_TYPE.IMG && typeof s_item.data == 'string') {
-                                        if (input.type == ITEM_TYPE.FRACTION && question_type && Array.isArray(input.data) && [
+                                    if (input.type != ITEM_TYPE.TEXT && 
+                                        input.type != ITEM_TYPE.IMG && 
+                                        typeof s_item.data == 'string') {
+                                        if (input.type == ITEM_TYPE.FRACTION && 
+                                            question_type && 
+                                            Array.isArray(input.data) && 
+                                            [
                                             QUESTION_TYPE.CH_004,
                                             QUESTION_TYPE.CH_001,
-                                            QUESTION_TYPE.CH_003
+                                            QUESTION_TYPE.CH_003,
+                                            QUESTION_TYPE.CH_012
                                         ].includes(question_type)) {
                                             if (input.data.length > 3) {
                                                continue
                                             }
                                             for (let k = 0; k < input.data.length; ++k) {
-                                                if (Array.isArray(input.data) && input.data[k] === '[]') {
-                                                    let f = items[j];
-                                                    if (f && typeof f.data == 'string') {
-                                                        solutions[`${a_index}#${i}#${k}`] = f.data;
-                                                        answer_pupil[`${a_index}#${i}#${k}`] = ''
+                                                if (Array.isArray(input.data) && 
+                                                    (input.data[k] === '[]' ||
+                                                    input.data[k].includes('[]'))
+                                                ) {
+                                                    let getInputs: any = input.data[k].match(regexCheckRenderInput);
+                                                    if (input.data[k] && getInputs.length > 1) {
+                                                        //Nếu trong cùng 1 tử số or mẫu số có 2 ô input trở lên
+                                                        for (var m = 0; m < getInputs.length; m++) {
+                                                            let f = items[j];
+                                                            if (f && typeof f.data === 'string') {
+                                                                solutions[`${a_index}#${i}#${k}#${m}`] = f.data;
+                                                                answer_pupil[`${a_index}#${i}#${k}#${m}`] = '';
+                                                            }
+                                                            j++;
+                                                        }
+                                                    } else {
+                                                        let f = items[j];
+                                                        //Nếu trong cùng tử số or mẫu số có 1 ô input
+                                                        if (f && typeof f.data === 'string') {
+                                                            solutions[`${a_index}#${i}#${k}`] = f.data;
+                                                            answer_pupil[`${a_index}#${i}#${k}`] = '';
+                                                        }
+                                                        j++;
                                                     }
-                                                    j++;
+                                                    // let f = items[j];
+                                                    // if (f && typeof f.data == 'string') {
+                                                    //     solutions[`${a_index}#${i}#${k}`] = f.data;
+                                                    //     answer_pupil[`${a_index}#${i}#${k}`] = ''
+                                                    // }
+                                                    // j++;
                                                 }
                                             }
                                         } else if (input.type != ITEM_TYPE.AUDIO) {
