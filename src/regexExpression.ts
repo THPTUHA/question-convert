@@ -3,6 +3,8 @@ export const regexCheckRenderInteger =
   /(\#\_\(\d*\D*\W*\w*\d*\D*\d*\D*\W*\w*\d*\D*\)\-\_\#)/g; // #_(abc...)-_#
 export const regexCheckRenderIntegerValue =
   /(\(\d*\D*\W*\w*\d*\D*\d*\D*\W*\w*\d*\D*\)\-)/g; // (abc...)-
+export const regexCheckMathjax = /\$.*?\$/g; // $abc$
+export const regexCheckSymbolMath = /[+\-\×\:]+/g; // +-×: ký hiệu toán học
 
 export const regexStartBlock = /(\#\_)/g; // #_
 export const regexEndBlock = /(\_\#)/g; // _#
