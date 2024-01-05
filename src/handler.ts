@@ -363,7 +363,12 @@ export const hanldeQuestion = (questions: RawQuestion[]) => {
 export const handleCheckQuestion = (questions: QuestionRender[]) => {
     let question_checked = [];
     for (const question of questions) {
-        if (question.id) {
+        if (question.id && 
+            ![
+                QUESTION_TYPE.TV_010,
+                QUESTION_TYPE.TV_011,
+                QUESTION_TYPE.TV_012,
+              ].includes(question?.type)) {
             let is_answer = false;
             let is_correct = true;
             // Dạng kéo thả đáp án vào vùng trống

@@ -445,9 +445,10 @@ const splitInput = (str: string, result: Item[]) => {
         .slice(SPLIT.length, inner.length)
         .split(';')
         .map(item => item.trim());
-      if (typeof inner_slice === 'object') {
-        randomArray(inner_slice);
-      }
+      //dat rào sửa lỗi random đáp án của dạng TA_007
+      // if (typeof inner_slice === 'object') {
+      //   randomArray(inner_slice);
+      // }
       result.push({
         type: ITEM_TYPE.DROP_ANSWER,
         data: inner_slice,
