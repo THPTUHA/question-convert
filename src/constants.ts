@@ -72,3 +72,4 @@ export const QUESTION_TYPE = {
 export const S_ANSWER_CORRECT = 1;
 export const S_ANSWER_WRONG = 2;
 export const S_UNANSWER = 3;
+export const S_ANSWERED = 4;
