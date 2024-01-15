@@ -1,5 +1,6 @@
 import { BASE_IMG_QUESTION_URL, ITEM_TYPE } from "./constants";
 import { Group, Item } from "./types";
+import {regexCheckInput, regexCheckRenderInteger, regexCheckSymbolMath} from './regexExpression';
 
 const specialText = (t: string)=>{
   if(t==='(...)'){
@@ -15,19 +16,19 @@ const specialText = (t: string)=>{
   }
 }
 //#_ _#
-const getContentWrap = (str: string) => {
-  if (str.includes("#_[]_#")){
-    return str
-  }
-  if (str.startsWith('(#_')) {
-    return str.slice(3, str.length - 3);
-  }
+// const getContentWrap = (str: string) => {
+//   if (str.includes("#_[]_#")){
+//     return str
+//   }
+//   if (str.startsWith('(#_')) {
+//     return str.slice(3, str.length - 3);
+//   }
 
-  if (str.startsWith('#_')) {
-    return str.slice(2, str.length - 2);
-  }
-  return str;
-};
+//   if (str.startsWith('#_')) {
+//     return str.slice(2, str.length - 2);
+//   }
+//   return str;
+// };
 
 function replaceNewLines(input:string) {
   let isSpecialString = false; // Biến cờ để xác định xem chúng ta đang ở trong chuỗi đặc biệt
@@ -282,53 +283,130 @@ const splitInput = (str: string, result: Item[]) => {
     if (comp.length > 2) {
       return console.log('err');
     }
-    for (let i = 0; i < comp.length; ++i) {
-      if (comp[i].split(':')?.length > 1) {
-      } else {
-        comp[i] = getContentWrap(comp[i]);
-      }
-    }
+
+    // for (let i = 0; i < comp.length; ++i) {
+    //   if (comp[i].split(':')?.length > 1) {
+    //   } else {
+    //     comp[i] = getContentWrap(comp[i]);
+    //   }
+    // }
 
     // [] []/[]  or []/[]
     // (#_(abab)-_#) / (#_(cdcd)-_#)
     // '(2 × #_[]_#)/(5 × #_[]_#)'
     const numerator = comp[0];
+    var hasNumber = /\d/;
+    
     if (numerator) {
-      if (numerator.includes("#_[]_#")){
-        data.push(numerator)
-      }else{
-        let items;
-        //dat them xử lý phép toán ở tử số và mẫu số của dạng phân số
-        if (numerator.includes('[]')) {
-          items = numerator.split(' ');
-        } else {
-          if (numerator.includes('(') && numerator.includes(')')) {
-            items = numerator.split('/ (?![^[]*])/');
-          } else {
-            items = numerator.split(' ');
-          }
-        }
+      // let items;
+      // //dat them xử lý phép toán ở tử số và mẫu số của dạng phân số
+      // if (numerator.includes('[]') && !hasNumber.test(numerator)) {
+      //   items = numerator.split(' ');
+      // } else {
+      //   if (numerator.includes('(') && numerator.includes(')')) {
+      //     items = numerator.split('/ (?![^[]*])/');
+      //     items = items.map(el => {
+      //       if (el && el[0] === '(' && el[el.length - 1] === ')') {
+      //         return el?.replace(/[(]/g, '')?.replace(/[)]/g, '');
+      //       } else {
+      //         return el;
+      //       }
+      //     });
+      //   } else {
+      //     items = numerator.split(' ');
+      //   }
+      // }
 
-        let pre = '';
-        for (let item of items) {
-          if (item == '[]') {
-            if (pre) {
-              data.push(pre);
-            }
-            data.push('[]');
-            pre = '';
-          } else if (numerator.includes(')-')) {
-            pre += item;
+      let tmpRegexCheckRenderInterger = new RegExp(
+        regexCheckRenderInteger,
+      ).test(numerator);
+      let tmpRegexCheckInput = new RegExp(regexCheckInput).test(numerator);
+      let tmpRegexHasNumber = new RegExp(hasNumber).test(numerator);
+      let tmpRegexHasSymbolMath = new RegExp(regexCheckSymbolMath).test(numerator);
+
+      let items;
+      if (tmpRegexCheckRenderInterger) {
+        //Nếu biểu thức có chứa số nguyên
+        if (tmpRegexCheckInput) {
+          //Nếu biểu thức có chứ input
+          items = [numerator.replace(regexCheckInput, '[]')];
+        } else if (tmpRegexHasNumber) {
+          //Nếu biểu thức có chứa số
+          items = [numerator];
+        } else {
+          items = [numerator];
+        }
+      } else if (tmpRegexCheckInput) {
+        //Nếu biểu thức có chứ input
+        if (tmpRegexHasNumber) {
+          //Nếu biểu thức có chứa số
+          items = [numerator.replace(regexCheckInput, '[]')];
+        } else {
+          //check nếu là hỗn số
+          let tmpSplitNumerator = numerator.split(' ');
+          if (tmpSplitNumerator.length > 2) {
+            items = [numerator.replace(regexCheckInput, '[]')];
           } else {
-            data.push(item);
+            if (tmpRegexCheckInput) {
+              //Nếu là dạng input
+              items = [numerator.replace(regexCheckInput, '[]')];
+            } else {
+              items = numerator.split(' ');
+            }
           }
         }
-        if (pre) {
-          data.push(pre);
+      } else if (tmpRegexHasNumber) {
+        //check nếu là hỗn số
+        let tmpSplitNumerator = numerator.split(' ');
+        if (tmpSplitNumerator.length > 2) {
+          items = [numerator];
+        } else {
+          items = numerator.split(' ');
+        }
+      } else if(tmpRegexHasSymbolMath) {
+        items = [numerator];
+      } else {
+        items = numerator.split(' ');
+      }
+
+      // let pre = '';
+      // for (let item of items) {
+      //   if (item == '[]') {
+      //     if (pre) {
+      //       data.push(pre);
+      //     }
+      //     data.push('[]');
+      //     pre = '';
+      //   } else if (numerator.includes(')-')) {
+      //     pre += item;
+      //   } else {
+      //     data.push(item);
+      //   }
+      // }
+      // if (pre) {
+      //   data.push(pre);
+      // }
+
+      let pre = '';
+      for (let item of items) {
+        if (item == '[]') {
+          if (pre) {
+            data.push(pre);
+          }
+          data.push('[]');
+          pre = '';
+        } else {
+          data.push(item);
         }
       }
+      if (pre) {
+        data.push(pre);
+      }
     }
-    data.push(comp[1]);
+
+    let numerator1 = comp[1];
+    data.push(numerator1.replace(regexCheckInput, '[]'));
+
     result.push({
       type: ITEM_TYPE.FRACTION,
       data,
@@ -367,9 +445,10 @@ const splitInput = (str: string, result: Item[]) => {
         .slice(SPLIT.length, inner.length)
         .split(';')
         .map(item => item.trim());
-      if (typeof inner_slice === 'object') {
-        randomArray(inner_slice);
-      }
+      //dat rào sửa lỗi random đáp án của dạng TA_007
+      // if (typeof inner_slice === 'object') {
+      //   randomArray(inner_slice);
+      // }
       result.push({
         type: ITEM_TYPE.DROP_ANSWER,
         data: inner_slice,
