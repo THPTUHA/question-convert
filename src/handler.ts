@@ -68,13 +68,15 @@ export const hanldeQuestion = (questions: RawQuestion[]) => {
                 randomArray(answers)
             }
 
-            if (question.random && question_type && [
+            if (question_type && [
                 QUESTION_TYPE.CH_007,
             ].includes(question_type)){
                 const left = answers.slice(0, Math.floor( answers.length/ 2))
                 const right = answers.slice( Math.floor( answers.length/ 2 ),answers.length)
-                randomArray(left)
-                randomArray(right)
+                if (question.random){
+                    randomArray(left)
+                    randomArray(right)
+                }
                 for(const e of left){
                     e.label = 'left'
                 }
@@ -83,6 +85,7 @@ export const hanldeQuestion = (questions: RawQuestion[]) => {
                 }
                 answers = [...left, ...right]
             }
+            
             // "answer_index#input_index"
             let solutions: Solution = {}
             let answer_pupil: Solution = {}
