@@ -66,6 +66,9 @@ export const QUESTION_TYPE = {
     TV_011: "TV_011",
     TA_011: "TA_011",
     TV_012: "TV_012",
+
+    GV_001: "GV_001",
+    GV_002: "GV_002"
 };
 
 
