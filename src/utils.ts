@@ -200,7 +200,16 @@ const splitInput = (str: string, result: Item[]) => {
             type: ITEM_TYPE.AUDIO,
             data: `${BASE_IMG_QUESTION_URL}/${element[1].slice(1, -1)}`,
           });
-        } else if (element[1].includes('.png') || element[1].includes('jpg')) {
+        } else if (
+          element[1].includes('.png') || 
+          element[1].includes('jpg') || 
+          element[1].includes('.svg') ||
+          element[1].includes('.jpeg') ||
+          element[1].includes('.PNG') ||
+          element[1].includes('.JPG') ||
+          element[1].includes('.SVG') ||
+          element[1].includes('.JPEG')
+        ) {
           data[key].push({
             type: ITEM_TYPE.IMG,
             data: `${BASE_IMG_QUESTION_URL}/${element[1].slice(1, -1)}`,
