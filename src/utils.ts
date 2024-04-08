@@ -30,26 +30,26 @@ const specialText = (t: string)=>{
 //   return str;
 // };
 
-function replaceNewLines(input:string) {
-  let isSpecialString = false; // Biến cờ để xác định xem chúng ta đang ở trong chuỗi đặc biệt
+// function replaceNewLines(input:string) {
+//   let isSpecialString = false; // Biến cờ để xác định xem chúng ta đang ở trong chuỗi đặc biệt
 
-  // Tách chuỗi thành từng ký tự
-  const characters = input.split('');
+//   // Tách chuỗi thành từng ký tự
+//   const characters = input.split('');
 
-  for (let i = 0; i < characters.length; i++) {
-    if (characters[i] === '$' && characters[i + 1] === '$') {
-      // Bắt đầu hoặc kết thúc chuỗi đặc biệt
-      isSpecialString = !isSpecialString;
-      i++; // Bỏ qua ký tự thứ hai của "$$"
-    } else if (characters[i] === '\n' && !isSpecialString ) {
-      // Thay thế '\n' bằng `<br>`
-      characters[i] = '<br>';
-    }
-  }
+//   for (let i = 0; i < characters.length; i++) {
+//     if (characters[i] === '$' && characters[i + 1] === '$') {
+//       // Bắt đầu hoặc kết thúc chuỗi đặc biệt
+//       isSpecialString = !isSpecialString;
+//       i++; // Bỏ qua ký tự thứ hai của "$$"
+//     } else if (characters[i] === '\n' && !isSpecialString ) {
+//       // Thay thế '\n' bằng `<br>`
+//       characters[i] = '<br></br>';
+//     }
+//   }
 
-  // Kết hợp các ký tự thành chuỗi kết quả
-  return characters.join('');
-}
+//   // Kết hợp các ký tự thành chuỗi kết quả
+//   return characters.join('');
+// }
 
 // function standardizeMathjax(input: string){
 //   const regexFrac = /(?<!\\)\\frac/g
@@ -121,7 +121,7 @@ const handleText = (str: string, result: Item[], question_type?: any) => {
         data: str
     })
   } else {
-    let data = replaceNewLines(str);
+    let data = str;
     if (data) {
       // data = standardizeMathjax(data) 
       var imgRegex = /<img[^>]*\/>/;
