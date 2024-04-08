@@ -9,8 +9,8 @@ export const hanldeQuestion = (questions: RawQuestion[]) => {
         let content = question.content;
         if (content) {
             const question_type = question.content?.kieu_cau_hoi;
-            const title = splitStringBySpecialCharacter(content.noi_dung_cau_hoi.noi_dung);
-            const explain = content.giai_thich_dap_an.noi_dung ? splitStringBySpecialCharacter(content.giai_thich_dap_an.noi_dung) : [];
+            const title = splitStringBySpecialCharacter(content.noi_dung_cau_hoi.noi_dung, false, content.kieu_cau_hoi);
+            const explain = content.giai_thich_dap_an.noi_dung ? splitStringBySpecialCharacter(content.giai_thich_dap_an.noi_dung, false, content.kieu_cau_hoi) : [];
 
             let answers = content.ds_cau_tra_loi.map((item, index) => {
                 let _content = splitStringBySpecialCharacter(item.noi_dung_cau_tra_loi.noi_dung);
@@ -66,6 +66,8 @@ export const hanldeQuestion = (questions: RawQuestion[]) => {
                 QUESTION_TYPE.TA_013,
                 QUESTION_TYPE.GV_001,
                 QUESTION_TYPE.GV_002,
+                QUESTION_TYPE.GV_003,
+                QUESTION_TYPE.GV_004,
             ].includes(question_type)) {
                 randomArray(answers)
             }
@@ -224,7 +226,8 @@ export const hanldeQuestion = (questions: RawQuestion[]) => {
                                 QUESTION_TYPE.TV_013, QUESTION_TYPE.TA_013,
                                 QUESTION_TYPE.TV_003, QUESTION_TYPE.TA_003, 
                                 QUESTION_TYPE.CH_011, QUESTION_TYPE.TA_004,
-                                QUESTION_TYPE.GV_001, QUESTION_TYPE.GV_002
+                                QUESTION_TYPE.GV_001, QUESTION_TYPE.GV_002,
+                                QUESTION_TYPE.GV_003, QUESTION_TYPE.GV_004,
                             ].includes(question_type)) {
                                 solutions[`${a_index}#${0}`] = answer.id;
                                 answer_pupil[`${a_index}#${0}`] = '';
@@ -463,7 +466,8 @@ export const handleCheckQuestion = (questions: QuestionRender[]) => {
                     QUESTION_TYPE.TA_013, QUESTION_TYPE.TV_013,
                     QUESTION_TYPE.CH_010, QUESTION_TYPE.CH_011,
                     QUESTION_TYPE.TA_006, QUESTION_TYPE.TV_006,
-                    QUESTION_TYPE.GV_001, QUESTION_TYPE.GV_002
+                    QUESTION_TYPE.GV_001, QUESTION_TYPE.GV_002,
+                    QUESTION_TYPE.GV_003, QUESTION_TYPE.GV_004,
                 ].includes(question.type)) {
                     const key_ans = Object.keys(answer_pupil);
                     if (keys.length != key_ans.length) {

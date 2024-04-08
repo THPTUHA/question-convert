@@ -1,4 +1,4 @@
-import { BASE_IMG_QUESTION_URL, ITEM_TYPE } from "./constants";
+import { BASE_IMG_QUESTION_URL, ITEM_TYPE, QUESTION_TYPE } from "./constants";
 import { Group, Item } from "./types";
 import {regexCheckInput, regexCheckRenderInteger, regexCheckSymbolMath} from './regexExpression';
 
@@ -42,8 +42,8 @@ function replaceNewLines(input:string) {
       isSpecialString = !isSpecialString;
       i++; // Bỏ qua ký tự thứ hai của "$$"
     } else if (characters[i] === '\n' && !isSpecialString ) {
-      // Thay thế '\n' bằng `</br>`
-      characters[i] = '</br>';
+      // Thay thế '\n' bằng `<br>`
+      characters[i] = '<br>';
     }
   }
 
@@ -95,7 +95,7 @@ function replaceNewLines(input:string) {
 //   return  input;
 // }
 
-const handleText = (str: string, result: Item[]) => {
+const handleText = (str: string, result: Item[], question_type?: any) => {
   // const arr = str.replace(/\n/g, '#\n#').split('#').filter(item => item);
   // for(const c of arr){
   //     if(c == '\n'){
@@ -110,36 +110,47 @@ const handleText = (str: string, result: Item[]) => {
   //         })
   //     }
   // }
- 
-  let data = replaceNewLines(str);
-  if (data) {
-    // data = standardizeMathjax(data) 
-    var imgRegex = /<img[^>]*\/>/;
-    var images = data.match(imgRegex);
-    if(images){
-      let index = 0
-      const arrs = data.split(imgRegex);
-      for(let i = 0; i < arrs.length ; ++i){
-        if(arrs[i] == "" || i > 0){
-          var img = images[index]
-          if(img){
-            var match = img.match( /<img[^>]*src="([^"]*)"[^>]*>/)
-            if(match){
-              var img_src = match[1];
-              result.push({
-                type: ITEM_TYPE.IMG,
-                data: img_src,
-              });
+  if([
+      QUESTION_TYPE.GV_001, 
+      QUESTION_TYPE.GV_002,
+      QUESTION_TYPE.GV_003,
+      QUESTION_TYPE.GV_004,
+    ].includes(question_type)){
+    result.push({
+        type: ITEM_TYPE.TEXT,
+        data: str
+    })
+  } else {
+    let data = replaceNewLines(str);
+    if (data) {
+      // data = standardizeMathjax(data) 
+      var imgRegex = /<img[^>]*\/>/;
+      var images = data.match(imgRegex);
+      if(images){
+        let index = 0
+        const arrs = data.split(imgRegex);
+        for(let i = 0; i < arrs.length ; ++i){
+          if(arrs[i] == "" || i > 0){
+            var img = images[index]
+            if(img){
+              var match = img.match( /<img[^>]*src="([^"]*)"[^>]*>/)
+              if(match){
+                var img_src = match[1];
+                result.push({
+                  type: ITEM_TYPE.IMG,
+                  data: img_src,
+                });
+              }
             }
           }
-        }
 
-        if(arrs[i]){
-          result.push(specialText(arrs[i]));
+          if(arrs[i]){
+            result.push(specialText(arrs[i]));
+          }
         }
+      }else{
+        result.push(specialText(data));
       }
-    }else{
-      result.push(specialText(data));
     }
   }
 };
@@ -202,13 +213,7 @@ const splitInput = (str: string, result: Item[]) => {
           });
         } else if (
           element[1].includes('.png') || 
-          element[1].includes('jpg') || 
-          element[1].includes('.svg') ||
-          element[1].includes('.jpeg') ||
-          element[1].includes('.PNG') ||
-          element[1].includes('.JPG') ||
-          element[1].includes('.SVG') ||
-          element[1].includes('.JPEG')
+          element[1].includes('jpg')
         ) {
           data[key].push({
             type: ITEM_TYPE.IMG,
@@ -278,7 +283,16 @@ const splitInput = (str: string, result: Item[]) => {
     return true;
   }
 
-  if (inner.includes('.png') || inner.includes('.jpg')) {
+  if (
+      inner.includes('.png') || 
+      inner.includes('.jpg') ||
+      inner.includes('.svg') ||
+      inner.includes('.jpeg') ||
+      inner.includes('.PNG') ||
+      inner.includes('.JPG') ||
+      inner.includes('.SVG') ||
+      inner.includes('.JPEG')
+    ) {
     result.push({
       type: ITEM_TYPE.IMG,
       data: `${BASE_IMG_QUESTION_URL}/${inner}`,
@@ -558,6 +572,7 @@ const splitAnswer = (str: string, result: Item[]) => {
 export const splitStringBySpecialCharacter = (
   str: string,
   is_answer?: boolean,
+  question_type?: any
 ) => {
   const result: Item[] = [];
   if (is_answer) {
@@ -574,7 +589,7 @@ export const splitStringBySpecialCharacter = (
       }
     }
     if (str_tmp) {
-      handleText(str_tmp, result);
+      handleText(str_tmp, result, question_type);
     }
   }
 
