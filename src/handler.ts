@@ -7,14 +7,15 @@ export const hanldeQuestion = (questions: RawQuestion[]) => {
     const question_render: QuestionRender[] = [];
     for (const [index, question] of questions.entries()) {
         let content = question.content;
-        if (content) {
-            const question_type = question.content?.kieu_cau_hoi;
-            const title = splitStringBySpecialCharacter(content.noi_dung_cau_hoi.noi_dung, false, content.kieu_cau_hoi);
-            const explain = content.giai_thich_dap_an.noi_dung ? splitStringBySpecialCharacter(content.giai_thich_dap_an.noi_dung, false, content.kieu_cau_hoi) : [];
+        const question_type = question.content?.kieu_cau_hoi;
+        
+        if (content && question_type) {
+            const title = splitStringBySpecialCharacter(content.noi_dung_cau_hoi.noi_dung, false, question_type);
+            const explain = content.giai_thich_dap_an.noi_dung ? splitStringBySpecialCharacter(content.giai_thich_dap_an.noi_dung, false, question_type) : [];
 
             let answers = content.ds_cau_tra_loi.map((item, index) => {
-                let _content = splitStringBySpecialCharacter(item.noi_dung_cau_tra_loi.noi_dung);
-                if (content && [QUESTION_TYPE.TV_009, QUESTION_TYPE.TA_009].includes(content.kieu_cau_hoi)) {
+                let _content = splitStringBySpecialCharacter(item.noi_dung_cau_tra_loi.noi_dung, false, question_type);
+                if (content && [QUESTION_TYPE.TV_009, QUESTION_TYPE.TA_009].includes(question_type)) {
                     return {
                         id: item.id_cau_tra_loi,
                         content: _content,
