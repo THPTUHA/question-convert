@@ -2,54 +2,54 @@ const { hanldeQuestion } = require("../dist")
 
 const questions = [
     {
-        "id": 212690,
+        "id": 214176,
         "content": {
             "ma_cau_hoi": "",
-            "kieu_cau_hoi": "GV_003",
+            "kieu_cau_hoi": "GV_004",
             "do_kho": "Thông hiểu",
-            "random": 1,
+            "random": 0,
             "noi_dung_cau_hoi": {
-                "noi_dung": "Công ty A cần xây bể chứa hình hộp chữ nhật (không có nắp), đáy là hình vuông cạnh bằng <img src=\"https://han01.vstorage.vngcloud.vn/v1/AUTH_9425075df801499188811151ab1de4dc/Nexta_Media/public/file/math-0.svg\" style=\"display:inline-block;width:30pt;height:20.25pt\"/>, chiều cao bằng <img src=\"https://han01.vstorage.vngcloud.vn/v1/AUTH_9425075df801499188811151ab1de4dc/Nexta_Media/public/file/math-2.svg\" style=\"display:inline-block;width:29.25pt;height:20.25pt\"/>. Biết thể tích bể chứa cần xây bằng <img src=\"https://han01.vstorage.vngcloud.vn/v1/AUTH_9425075df801499188811151ab1de4dc/Nexta_Media/public/file/math-4.svg\" style=\"display:inline-block;width:38.25pt;height:18pt\"/>, hỏi kích thước cạnh đáy và chiều cao bằng bao nhiêu để tổng diện tích các mặt xung quanh và mặt đáy nhỏ nhất?\n<img src=\"https://han01.vstorage.vngcloud.vn/v1/AUTH_9425075df801499188811151ab1de4dc/Nexta_Media/public/file/math-zz3355370100.png\"/>\n"
+                "noi_dung": "Bảng sau cho biết nhiệt độ tại Hà Nội vào một ngày mùa thu. Biểu đồ nào biểu diễn bảng thống kê trên.\n<img src=https://han01.vstorage.vngcloud.vn/v1/AUTH_9425075df801499188811151ab1de4dc/Nexta_Media/public/file/xxx-zz1935523192.png />\n"
             },
             "ds_cau_tra_loi": [
                 {
                     "id_cau_tra_loi": "A",
                     "noi_dung_cau_tra_loi": {
-                        "noi_dung": " <img src=\"https://han01.vstorage.vngcloud.vn/v1/AUTH_9425075df801499188811151ab1de4dc/Nexta_Media/public/file/math-6.svg\" style=\"display:inline-block;width:98.25pt;height:33.75pt\"/>"
+                        "noi_dung": "<img src=https://han01.vstorage.vngcloud.vn/v1/AUTH_9425075df801499188811151ab1de4dc/Nexta_Media/public/file/xxx-zz3504160018.png />"
                     }
                 },
                 {
                     "id_cau_tra_loi": "B",
                     "noi_dung_cau_tra_loi": {
-                        "noi_dung": " <img src=\"https://han01.vstorage.vngcloud.vn/v1/AUTH_9425075df801499188811151ab1de4dc/Nexta_Media/public/file/math-8.svg\" style=\"display:inline-block;width:92.25pt;height:33.75pt\"/>"
+                        "noi_dung": "<img src=https://han01.vstorage.vngcloud.vn/v1/AUTH_9425075df801499188811151ab1de4dc/Nexta_Media/public/file/xxx-zz917574455.png />"
                     }
                 },
                 {
                     "id_cau_tra_loi": "C",
                     "noi_dung_cau_tra_loi": {
-                        "noi_dung": " <img src=\"https://han01.vstorage.vngcloud.vn/v1/AUTH_9425075df801499188811151ab1de4dc/Nexta_Media/public/file/math-10.svg\" style=\"display:inline-block;width:96.75pt;height:33.75pt\"/>"
+                        "noi_dung": "<img src=https://han01.vstorage.vngcloud.vn/v1/AUTH_9425075df801499188811151ab1de4dc/Nexta_Media/public/file/xxx-zz3139653492.png />"
                     }
                 },
                 {
                     "id_cau_tra_loi": "D",
                     "noi_dung_cau_tra_loi": {
-                        "noi_dung": " <img src=\"https://han01.vstorage.vngcloud.vn/v1/AUTH_9425075df801499188811151ab1de4dc/Nexta_Media/public/file/math-12.svg\" style=\"display:inline-block;width:84pt;height:15.75pt\"/>"
+                        "noi_dung": "<img src=https://han01.vstorage.vngcloud.vn/v1/AUTH_9425075df801499188811151ab1de4dc/Nexta_Media/public/file/xxx-zz2573161932.png />"
                     }
                 }
             ],
             "dap_an": [
                 {
-                    "id_cau_tra_loi": "B",
+                    "id_cau_tra_loi": "A",
                     "noi_dung_dap_an": ""
                 }
             ],
             "giai_thich_dap_an": {
-                "noi_dung": " Chọn đáp án B là chính xác\n"
+                "noi_dung": "\nTừ bảng thống kê, nhiệt độ tại các thời điểm 8h, 10h, 12h, 14h, 16h, 18h, 20h lần lượt là 23, 25, 34, 32, 26, 22, 18. Do đó biểu đồ biểu diễn là:\n<img src=https://han01.vstorage.vngcloud.vn/v1/AUTH_9425075df801499188811151ab1de4dc/Nexta_Media/public/file/xxx-zz3504160018.png />\n\n\n\n"
             },
             "difficult_level": 2
         },
-        "difficult_level": 1,
-        "random": true
+        "difficult_level": 2,
+        "random": false
     }
 ]
 
