@@ -5,6 +5,7 @@ export const regexCheckRenderIntegerValue =
   /(\(\d*\D*\W*\w*\d*\D*\d*\D*\W*\w*\d*\D*\)\-)/g; // (abc...)-
 export const regexCheckMathjax = /\$.*?\$/g; // $abc$
 export const regexCheckSymbolMath = /[+\-\×\:]+/g; // +-×: ký hiệu toán học
+export const regexCheckFormulaInBrackets = /(\#\_.*?\_\#)/g; //(#_t_a đến b_#)
 
 export const regexStartBlock = /(\#\_)/g; // #_
 export const regexEndBlock = /(\_\#)/g; // _#
