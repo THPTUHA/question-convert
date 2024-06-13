@@ -1,6 +1,4 @@
-export const BASE_IMG_QUESTION_URL = `${process.env.REACT_APP_BASE_IMG_VNG ??
-    "https://han01.vstorage.vngcloud.vn/v1/AUTH_9425075df801499188811151ab1de4dc/Nexta_Media"
-    }/public/questions`;
+export const BASE_IMG_QUESTION_URL = `https://han01.vstorage.vngcloud.vn/v1/AUTH_9425075df801499188811151ab1de4dc/Nexta_Media/public/questions`;
 
 
 export const ITEM_TYPE = {
