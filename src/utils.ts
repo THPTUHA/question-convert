@@ -1,6 +1,6 @@
 import { BASE_IMG_QUESTION_URL, ITEM_TYPE, QUESTION_TYPE } from "./constants";
 import { Group, Item } from "./types";
-import {regexCheckInput, regexCheckRenderInteger, regexCheckSymbolMath} from './regexExpression';
+import {regexCheckFormulaInBrackets, regexCheckInput, regexCheckRenderInteger, regexCheckSymbolMath} from './regexExpression';
 
 const specialText = (t: string)=>{
   if(t==='(...)'){
@@ -346,6 +346,7 @@ const splitInput = (str: string, result: Item[]) => {
       let tmpRegexCheckInput = new RegExp(regexCheckInput).test(numerator);
       let tmpRegexHasNumber = new RegExp(hasNumber).test(numerator);
       let tmpRegexHasSymbolMath = new RegExp(regexCheckSymbolMath).test(numerator);
+      let tmpRegexCheckFormulaInBrackets = new RegExp(regexCheckFormulaInBrackets).test(numerator);
 
       let items;
       if (tmpRegexCheckRenderInterger) {
@@ -387,6 +388,8 @@ const splitInput = (str: string, result: Item[]) => {
           items = numerator.split(' ');
         }
       } else if(tmpRegexHasSymbolMath) {
+        items = [numerator];
+      } else if(tmpRegexCheckFormulaInBrackets) {
         items = [numerator];
       } else {
         items = numerator.split(' ');
