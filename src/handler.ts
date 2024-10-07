@@ -15,7 +15,7 @@ export const hanldeQuestion = (questions: RawQuestion[]) => {
 
             let answers = content.ds_cau_tra_loi.map((item, index) => {
                 let _content = splitStringBySpecialCharacter(item.noi_dung_cau_tra_loi.noi_dung, false, question_type);
-                if (content && [QUESTION_TYPE.TV_009, QUESTION_TYPE.TA_009].includes(question_type)) {
+                if (content && [QUESTION_TYPE.TV_009, QUESTION_TYPE.TA_009, QUESTION_TYPE.CH_017].includes(question_type)) {
                     return {
                         id: item.id_cau_tra_loi,
                         content: _content,
@@ -27,7 +27,8 @@ export const hanldeQuestion = (questions: RawQuestion[]) => {
                 // Dạng nối
                 if (content && [
                     QUESTION_TYPE.TV_005, QUESTION_TYPE.TA_005,
-                    QUESTION_TYPE.TV_006, QUESTION_TYPE.TA_006
+                    QUESTION_TYPE.TV_006, QUESTION_TYPE.TA_006,
+                    QUESTION_TYPE.CH_014
                 ].includes(content.kieu_cau_hoi)) {
                     if (_content[0] && typeof _content[0].data === 'string') {
                         let eles = _content[0].data.split("_");
@@ -52,15 +53,24 @@ export const hanldeQuestion = (questions: RawQuestion[]) => {
             });
 
             // Random thứ tự đáp án
-            if (question.random && question_type && [
+            if (question.random && 
+                question_type && 
+                [
                 QUESTION_TYPE.CH_005, 
+                QUESTION_TYPE.CH_006,
+                QUESTION_TYPE.CH_010,
+                QUESTION_TYPE.TV_003, 
+                QUESTION_TYPE.TA_003,
                 QUESTION_TYPE.TA_008, 
                 QUESTION_TYPE.TV_008,
+                QUESTION_TYPE.CH_016,
                 QUESTION_TYPE.TA_014,
                 QUESTION_TYPE.TA_009,
                 QUESTION_TYPE.TV_009,
+                QUESTION_TYPE.CH_017,
                 QUESTION_TYPE.TA_004,
                 QUESTION_TYPE.TV_004,
+                QUESTION_TYPE.CH_018,
                 QUESTION_TYPE.CH_004,
                 QUESTION_TYPE.CH_011,
                 QUESTION_TYPE.TV_013,
@@ -95,7 +105,7 @@ export const hanldeQuestion = (questions: RawQuestion[]) => {
             let solutions: Solution = {}
             let answer_pupil: Solution = {}
 
-            if ([QUESTION_TYPE.TV_009, QUESTION_TYPE.TA_009].includes(content.kieu_cau_hoi)) {
+            if ([QUESTION_TYPE.TV_009, QUESTION_TYPE.TA_009, QUESTION_TYPE.CH_017].includes(content.kieu_cau_hoi)) {
 
                 const group = title.filter(item => item.type === ITEM_TYPE.GROUP)[0];
                 if (group && typeof group.data === 'object' && !Array.isArray(group.data)) {
@@ -118,6 +128,7 @@ export const hanldeQuestion = (questions: RawQuestion[]) => {
                 QUESTION_TYPE.CH_007,
                 QUESTION_TYPE.TV_005, QUESTION_TYPE.TA_005,
                 QUESTION_TYPE.TV_006, QUESTION_TYPE.TA_006,
+                QUESTION_TYPE.CH_014
             ].includes(content.kieu_cau_hoi)) {
                 content.dap_an.map((item) => {
                     solutions[item.noi_dung_dap_an.split("_").sort((a, b) => a > b ? 1 : -1).join("_")] = 'true';
@@ -154,7 +165,9 @@ export const hanldeQuestion = (questions: RawQuestion[]) => {
             }
             else if (
                 content.kieu_cau_hoi === QUESTION_TYPE.TV_008 ||
-                content.kieu_cau_hoi === QUESTION_TYPE.TA_008) {
+                content.kieu_cau_hoi === QUESTION_TYPE.TA_008 ||
+                content.kieu_cau_hoi === QUESTION_TYPE.CH_016
+            ) {
                 const dropList = title.filter(item => item.type === ITEM_TYPE.DROP_ANSWER);
                 let formatAnswers = [
                     {
@@ -180,7 +193,9 @@ export const hanldeQuestion = (questions: RawQuestion[]) => {
                 formatAnswers[0].content.push({ type: ITEM_TYPE.DROP_ANSWER, data: ansList });
                 answers = [...formatAnswers];
             } else if (content.kieu_cau_hoi === QUESTION_TYPE.TV_007 ||
-                content.kieu_cau_hoi === QUESTION_TYPE.TA_007) {
+                content.kieu_cau_hoi === QUESTION_TYPE.TA_007 || 
+                content.kieu_cau_hoi === QUESTION_TYPE.CH_015
+            ) {
                 // 1 answer tương ứng với 1 đáp án
                 for (const [a_index, answer] of answers.entries()) {
                     // Đáp án nguyên bản của câu hỏi 
@@ -229,6 +244,7 @@ export const hanldeQuestion = (questions: RawQuestion[]) => {
                                 QUESTION_TYPE.CH_011, QUESTION_TYPE.TA_004,
                                 QUESTION_TYPE.GV_001, QUESTION_TYPE.GV_002,
                                 QUESTION_TYPE.GV_003, QUESTION_TYPE.GV_004,
+                                QUESTION_TYPE.CH_018
                             ].includes(question_type)) {
                                 solutions[`${a_index}#${0}`] = answer.id;
                                 answer_pupil[`${a_index}#${0}`] = '';
@@ -392,7 +408,7 @@ export const handleCheckQuestion = (questions: QuestionRender[]) => {
             let is_answer = false;
             let is_correct = true;
             // Dạng kéo thả đáp án vào vùng trống
-            if ([QUESTION_TYPE.TV_009, QUESTION_TYPE.TA_009].includes(question.type)) {
+            if ([QUESTION_TYPE.TV_009, QUESTION_TYPE.TA_009, QUESTION_TYPE.CH_017].includes(question.type)) {
                 const keys = Object.keys(question.answer_pupil);
                 for (const key of keys) {
                     const pupil_answer = question.answers.filter(ans => ans.label === key)
@@ -469,6 +485,7 @@ export const handleCheckQuestion = (questions: QuestionRender[]) => {
                     QUESTION_TYPE.TA_006, QUESTION_TYPE.TV_006,
                     QUESTION_TYPE.GV_001, QUESTION_TYPE.GV_002,
                     QUESTION_TYPE.GV_003, QUESTION_TYPE.GV_004,
+                    QUESTION_TYPE.CH_018
                 ].includes(question.type)) {
                     const key_ans = Object.keys(answer_pupil);
                     if (keys.length != key_ans.length) {
