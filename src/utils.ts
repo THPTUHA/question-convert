@@ -300,6 +300,14 @@ const splitInput = (str: string, result: Item[]) => {
     return true;
   }
 
+  function removeFirstAndLastBrackets(str: any){
+    if (str && str[0] === '(' && str[str.length - 1] === ')') {
+      return str.slice(1, -1)
+    } else {
+      return str;
+    }
+  }
+
   if (inner.includes('/')) {
     const comp = inner.split('/');
     const data = [];
@@ -422,7 +430,7 @@ const splitInput = (str: string, result: Item[]) => {
           data.push('[]');
           pre = '';
         } else {
-          data.push(item);
+          data.push(removeFirstAndLastBrackets(item));
         }
       }
       if (pre) {
@@ -431,7 +439,7 @@ const splitInput = (str: string, result: Item[]) => {
     }
 
     let numerator1 = comp[1];
-    data.push(numerator1.replace(regexCheckInput, '[]'));
+    data.push(removeFirstAndLastBrackets(numerator1.replace(regexCheckInput, '[]')));
 
     result.push({
       type: ITEM_TYPE.FRACTION,

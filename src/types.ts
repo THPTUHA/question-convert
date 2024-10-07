@@ -80,6 +80,8 @@ export type QuestionRender = {
     answer_pupil: Solution,
     type: string,
     status: number,
+    checkAnswer?: any;
+    answered?: boolean;
     focus?: string,
     code?: string,
 }
@@ -131,6 +133,10 @@ export type Ans_CH_007 = [{
 export type Ans_CH_008 = string
 export type Ans_CH_009 = (boolean | null)[]
 export type Ans_CH_010 = Ans_CH_005
+export type Ans_CH_014 = Ans_TV_005
+export type Ans_CH_015 = Ans_TV_007
+export type Ans_CH_016 = Ans_TV_008
+export type Ans_CH_017 = Ans_TV_009
 
 export type Ans_TA_001 = Ans_CH_001
 export type Ans_TA_002 = Ans_CH_001
