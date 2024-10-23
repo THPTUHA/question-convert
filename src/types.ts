@@ -84,6 +84,7 @@ export type QuestionRender = {
     answered?: boolean;
     focus?: string,
     code?: string,
+    question_code?: any
 }
 
 export type ExamResult = {

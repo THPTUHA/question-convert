@@ -8,7 +8,7 @@ export const hanldeQuestion = (questions: RawQuestion[]) => {
     for (const [index, question] of questions.entries()) {
         let content = question.content;
         const question_type = question.content?.kieu_cau_hoi;
-        
+        const question_code = question.content?.ma_cau_hoi;
         if (content && question_type) {
             const title = splitStringBySpecialCharacter(content.noi_dung_cau_hoi.noi_dung, false, question_type);
             const explain = content.giai_thich_dap_an.noi_dung ? splitStringBySpecialCharacter(content.giai_thich_dap_an.noi_dung, false, question_type) : [];
@@ -388,7 +388,8 @@ export const hanldeQuestion = (questions: RawQuestion[]) => {
                 answer_pupil: answer_pupil,
                 code: content.ma_cau_hoi,
                 type: question.content ? question.content.kieu_cau_hoi : '',
-                status: 0
+                status: 0,
+                question_code: question_code
             })
 
         }
